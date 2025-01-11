@@ -1,0 +1,374 @@
+.tagline-txt {
+  margin: 20px auto;
+  /* background-color: #084a5a; */
+  box-shadow: none;
+  background-image: url(../img/inside-banner/tagline-txt-rk.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 20vh;
+}
+
+.changing-text {
+  font-size: 2rem;
+  font-weight: bold;
+  /* text-align: center; */
+  /* color: #084a5a; */
+  color: #fff;
+  overflow: hidden; /* Ensure the text doesn't overflow */
+  height: 5.5rem; /* Adjust height to match font size */
+  position: relative;
+}
+
+.changing-text span {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  animation: fadeSlide 9s linear infinite; /* Infinite animation */
+  background: radial-gradient(circle farthest-corner at center center, #fcd801 70%, #F8A90F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+/* Keyframes for fade and slide effect */
+@keyframes fadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+/* Set individual animations for each span */
+.changing-text span:nth-child(1) {
+  animation-delay: 0s;
+}
+.changing-text span:nth-child(2) {
+  animation-delay: 3s;
+}
+.changing-text span:nth-child(3) {
+  animation-delay: 6s;
+}
+
+/* YouTuble-Video-Section */
+.ytv-video-section-rk {
+  padding: 60px 0;
+}
+.ytv-video-section-rk .tab-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  width: 54%;
+  margin: auto;
+}
+
+.ytv-video-section-rk .tab-buttons {
+  display: flex;
+  overflow-x: auto;
+  margin-bottom: 10px;
+  scrollbar-width: none;
+}
+
+.ytv-video-section-rk .tab-button {
+  padding: 10px 20px;
+  background: radial-gradient(circle farthest-corner at center center, #fcd801 70%, #F8A90F 100%);
+  color: #084a5a;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  margin: 5px;
+  font-size: 1.3em;
+  font-weight: 600;
+  font-family: Merriweather, serif;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.ytv-video-section-rk .tab-button.active {
+  color: #fff;
+  background: #084a5a;
+}
+
+.ytv-video-section-rk .playlist-content {
+  background-color: transparent;
+  padding: 30px 0;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.ytv-video-section-rk .playlist-content .playlist-section {
+  display: none;
+  padding: 0px 0;
+}
+
+.ytv-video-section-rk .playlist-content .playlist-section.active {
+  display: block;
+}
+
+.ytv-video-section-rk .video-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.ytv-video-section-rk .video-container p.video-title-comson {
+  font-weight: 600;
+  text-align: left;
+  font-family: Merriweather;
+  color: #181818;
+  font-size: 1.5rem !important;
+}
+
+.ytv-video-section-rk .video-thumbnail {
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f7f7f7;
+}
+
+/* .ytv-video-section-rk .video-thumbnail img {
+  width: 100%;
+  border-radius: 8px;
+ margin: 0.6rem 0;
+} */
+
+.ytv-video-section-rk .video-thumbnail img {
+  width: 100%;
+  border-radius: 8px 0 0;
+  margin-bottom: -10px;
+}
+
+.ytv-video-section-rk .video-thumbnail p.video-title {
+  text-align: left;
+  color: #fff;
+  cursor: pointer;
+  margin: 0;
+  line-height: 1.4;
+  font-weight: normal;
+  background-color: #084a5a;
+  /* background-color: #f8aa0f; */
+  padding: 25px 5px;
+  border: 5px solid #d0b07f;
+}
+.ytv-video-section-rk .video-thumbnail p.video-title span {
+  background: radial-gradient(circle farthest-corner at center center, #fcd801 70%, #F8A90F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+.ytv-video-section-rk .is-wrapper p {
+  font-size: 20px !important;
+}
+
+.ytv-video-section-rk .load-more {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #f8aa0f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Play button style */
+.ytv-video-section-rk .video-thumbnail .play-button {
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  align-content: center;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(#084a5a 50%, rgb(255 217 0) 52%);
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  overflow: hidden;
+  margin: 0px !important;
+  opacity: 0.5;
+}
+
+.ytv-video-section-rk .video-thumbnail .play-button:hover{
+  opacity: 0.9;
+}
+.ytv-video-section-rk .video-thumbnail .play-button::before {
+  content: '';
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-animation: pulsate-btn 2s;
+  animation: pulsate-btn 2s;
+  -webkit-animation-direction: forwards;
+  animation-direction: forwards;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: steps;
+  animation-timing-function: steps;
+  opacity: 1;
+  border-radius: 50%;
+  border: 5px solid rgb(45 132 157);
+  background: rgba(198, 16, 0, 0);
+  left: 50%;
+  top: 50%;
+  margin-top: -35px;
+  margin-left: -35px;
+}
+
+.ytv-video-section-rk .video-thumbnail .play-button::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 15px solid #fff;
+  z-index: 100;
+  transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+
+
+.ytv-video-section-rk .modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.ytv-video-section-rk .modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  background-color: #fff;
+  background-image: url(./assets-website/img/popup-youtube-content.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 78vh;
+}
+
+.ytv-video-section-rk .modal-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.ytv-video-section-rk .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 35px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #000;
+  border: 3px solid #e44544;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Slide button styling */
+.ytv-video-section-rk .slide-btn {
+  background-color: #000;
+  color: #fff;
+  font-size: 1em;
+  padding: 10px;
+  cursor: pointer;
+  transform: translateY(-25%);
+  /*   z-index: 100; */
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  margin-left: 5px;
+}
+
+.ytv-video-section-rk .left {
+  left: 10px;
+}
+
+.ytv-video-section-rk .right {
+  right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+
+  .changing-text{
+    font-size: 1.2rem;
+  }
+
+
+  .ytv-video-section-rk .video-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .ytv-video-section-rk .modal-content {
+    width: 90%;
+    height: 50vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .ytv-video-section-rk .video-container {
+    grid-template-columns: 1fr;
+  }
+
+  .ytv-video-section-rk .modal-content {
+    width: 100%;
+    height: 40vh;
+  }
+
+  .ytv-video-section-rk .tab-button {
+    padding: 8px 15px;
+  }
+}
