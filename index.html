@@ -510,17 +510,17 @@
                       method="post">
                       <div class="form-row">
                         <div class="col-md-12 form-group">
-                          <label for="frmname">Your Name</label>
+                          <!-- <label for="frmname">Your Name</label> -->
                           <input type="text" class="form-control" name="frmname" id="frmname"
                             placeholder="Enter your name" required>
                         </div>
                         <div class="col-md-12 form-group">
-                          <label for="frmemail">Your Email</label>
+                          <!-- <label for="frmemail">Your Email</label> -->
                           <input type="email" class="form-control" name="frmemail" id="frmemail"
                             placeholder="Enter your email address" required>
                         </div>
                         <div class="col-md-6 form-group">
-                          <label for="frmcourse">Select Course</label>
+                          <!-- <label for="frmcourse">Select Course</label> -->
                           <select name="frmcourse" id="frmcourse" class="form-control" required>
                             <option value="">SELECT COURSE</option>
                             <option value="ENGINEERING">ENGINEERING</option>
@@ -530,12 +530,15 @@
                           </select>
                         </div>
                         <div class="col-md-6 form-group">
-                          <label for="frmmobile">Your Mobile No</label>
-                          <input type="number" class="form-control" name="frmmobile" id="frmmobile"
+                          <!-- <label for="frmmobile">Your Mobile No</label> -->
+                          <input type="tel" class="form-control" name="frmmobile" id="frmmobile"
                             placeholder="Enter your mobile number" required maxlength="10" pattern="\d{10}">
+
+
+                          <!-- <input type="tel" id="frmmobile" name="frmmobile" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"> -->
                         </div>
                         <div class="col-md-12 form-group">
-                          <label for="frmcomment">Message</label>
+                          <!-- <label for="frmcomment">Message</label> -->
                           <textarea class="form-control" name="frmcomment" id="frmcomment"
                             placeholder="Enter your message" required></textarea>
                         </div>

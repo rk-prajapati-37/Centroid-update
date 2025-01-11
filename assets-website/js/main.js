@@ -263,7 +263,7 @@
 
       // Google Apps Script Web App URL
       const scriptURL =
-        "https://script.google.com/macros/s/AKfycbxmP90XqtY9a9jsJgdULHCcSpLU7kzwnHU7CJz77HZ0tVHQHo2dzl3MWjbCD-n7WNTA/exec";
+        "https://script.google.com/macros/s/AKfycbwI_20A668Ot0D5nwd-sP65puGIAD9fHC-yYQbKlSYy35xRguKo0XYQCf9YgdludoKn/exec";
 
       // AJAX request
       $.ajax({
