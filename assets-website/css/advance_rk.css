@@ -339,6 +339,13 @@
   right: 10px;
 }
 
+.enquiry-frame-rk{
+  background-color: #2c4c5b;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
 /* Responsive Design */
 @media (max-width: 1024px) {
 

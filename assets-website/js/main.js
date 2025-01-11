@@ -244,6 +244,42 @@
 
   // contact from home
 
+  $(document).ready(function () {
+    $("#enquiry-form").on("submit", function (event) {
+      event.preventDefault(); // Prevent default form submission
+
+      console.log("this function waiting call");
+
+      // Serialize form data
+      const formData = {
+        frmname: $("#frmname").val(),
+        frmemail: $("#frmemail").val(),
+        frmcourse: $("#frmcourse").val(),
+        frmmobile: $("#frmmobile").val(),
+        frmcomment: $("#frmcomment").val(),
+      };
+
+      console.log(formData);
+
+      // Google Apps Script Web App URL
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbxmP90XqtY9a9jsJgdULHCcSpLU7kzwnHU7CJz77HZ0tVHQHo2dzl3MWjbCD-n7WNTA/exec";
+
+      // AJAX request
+      $.ajax({
+        url: scriptURL,
+        method: "POST",
+        data: formData,
+        success: function (response) {
+          alert(`Form submitted successfully!`);
+          $("#enquiry-form")[0].reset(); // Reset form after successful submission
+        },
+        error: function () {
+          alert("Error in form submission. Please try again.");
+        },
+      });
+    });
+  });
   //
 
   // Porfolio isotope and filter
