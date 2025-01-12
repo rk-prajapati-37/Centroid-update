@@ -359,6 +359,17 @@
   outline: 0;
   box-shadow: 3px 3px 10px #e5a017;
 }
+
+.row.contact-from-home h4.title {
+  transition: none;
+  background: radial-gradient(circle farthest-corner at center center, #084a5a 30%, #f8aa0f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-color: transparent;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
 /* Responsive Design */
 @media (max-width: 1024px) {
 
