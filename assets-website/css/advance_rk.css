@@ -342,7 +342,8 @@
 .enquiry-frame-rk{
   background-color: #2c4c5b;
   padding: 30px 0;
-    border-radius: 10px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 .enquiry-frame-rk .form-control {
   transition: none;
@@ -388,7 +389,20 @@
 
 /*  */
 /* Hands-on-Science Sunday Section */
-.hands-on-science-section {
+
+
+section#hands-on-science {
+  background: #2c4c5b;
+}
+h2.mb-0.hds-sci-title{
+  color: #fff;
+}
+section#hands-on-science .col-xl-9 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+/* .hands-on-science-section {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -413,7 +427,7 @@
 .container {
   max-width: 1200px;
   margin: auto;
-}
+} */
 
 .right-video-section {
   flex: 1;
@@ -496,13 +510,14 @@
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
-  color: #007BFF;
+  color: #f8aa0f;
 }
 
 .expectations-list {
   list-style: none;
   padding-left: 0;
   margin-bottom: 1.5rem;
+  color: #fff;
 }
 
 .expectations-list li {
@@ -510,19 +525,19 @@
 }
 
 .expectations-list li b {
-  color: #333;
+  color: #fff;
 }
 
 .closing-note {
   font-size: 1rem;
-  color: #555;
+  color: #fff;
   margin-bottom: 1.5rem;
 }
 
 .register-btn {
   display: inline-block;
-  background-color: #007BFF;
-  color: #fff;
+  background-color: #f8aa0f;
+  color: #002e3b;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-weight: 600;
@@ -533,7 +548,8 @@
 }
 
 .register-btn:hover {
-  background-color: #0056b3;
+  background-color: #002e3b;
+  color: #f8aa0f;
 }
 
 /*  */
