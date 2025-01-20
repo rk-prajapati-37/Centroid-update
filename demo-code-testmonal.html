@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonial Slider</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #e3f2fd, #ffebee);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+    }
+
+    .slider {
+      width: 90%;
+      /* Ensure full use of the screen size */
+      overflow: hidden;
+      position: relative;
+      padding: 0;
+    }
+
+    .slide-container {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      will-change: transform;
+      margin-left: 10px;
+      /* Added margin to prevent cutting off on left side */
+    }
+
+    .card {
+      flex: 0 0 calc(33.33% - 20px);
+      max-width: calc(33.33% - 20px);
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 0 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .card-header .user-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .card-header img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .card-header h3 {
+      font-size: 1em;
+      margin: 0;
+    }
+
+    .card-header span {
+      font-size: 0.9em;
+      color: #888;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-icons a {
+      text-decoration: none;
+      color: #fff;
+      padding: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      font-size: 1.2em;
+    }
+
+    .card-header .social-icons img {
+      width: 25px;
+      height: 25px;
+      border-radius: 0;
+      margin: 0px;
+    }
+
+    .social-icons a:hover {
+      opacity: 0.8;
+    }
+
+    .card p {
+      font-size: 0.95em;
+      line-height: 1.5;
+      margin-top: 10px;
+    }
+
+    .arrows {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .arrow {
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .arrow:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .card {
+        flex: 0 0 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        flex: 0 0 95%;
+        max-width: 93.5%;
+      }
+
+      .social-icons a {
+        font-size: 1em;
+        padding: 6px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider" id="slider">
+    <div class="slide-container">
+      <div class="card">
+        <div class="card-header">
+          <div class="user-info">
+            <img src="./assets-website/img/testimonials/satyajit-tawade-img.png" alt="User">
+            <div>
+              <h3>Lori Coleman</h3>
+              <span>3 days ago</span>
+            </div>
+          </div>
+          <div class="social-icons">
+            <a href="#" class="instagram" target="_blank"><img src="./assets-website/img/social-icon/instagram.png"
+                alt="instagram"></a>
+          </div>
+        </div>
+        <p>Incredible food with a fantastic service team, everyone on the service team moved as one as the dishes and
+          drinks are being served.</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="user-info">
+            <img src="./assets-website/img/testimonials/satyajit-tawade-img.png" alt="User">
+            <div>
+              <h3>Timothy Garrett</h3>
+              <span>3 days ago</span>
+            </div>
+          </div>
+          <div class="social-icons">
+            <a href="#" class="twitter" target="_blank"><img src="./assets-website/img/social-icon/twitter.png"
+                alt="twitter"></a>
+          </div>
+        </div>
+        <p>Probably my best Michelin experience! Chef Tom and the team doing an incredible job!! The service was
+          outstanding!</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="user-info">
+            <img src="./assets-website/img/testimonials/satyajit-tawade-img.png" alt="User">
+            <div>
+              <h3>Joe Lawson</h3>
+              <span>3 days ago</span>
+            </div>
+          </div>
+          <div class="social-icons">
+            <a href="#" class="facebook" target="_blank"><img src="./assets-website/img/social-icon/facebook.png"
+                alt="facebook"></a>
+          </div>
+        </div>
+        <p>Modern European cuisine with a light and zesty touch to the traditional. Worth a stop for special
+          celebrations!</p>
+      </div>
+    </div>
+    <div class="arrows">
+      <button class="arrow" id="prev">&#8592;</button>
+      <button class="arrow" id="next">&#8594;</button>
+    </div>
+  </div>
+
+  <script>
+    const slideContainer = document.querySelector('.slide-container');
+    const slides = document.querySelectorAll('.card');
+    const slideWidth = slides[0].offsetWidth + 20; // Account for margin
+    let currentIndex = 0;
+
+    let autoSlide;
+
+    const updateSlider = () => {
+      slideContainer.style.transition = 'transform 0.5s ease-in-out';
+      slideContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    };
+
+    const handleTransitionEnd = () => {
+      if (currentIndex === slides.length - 1) {
+        slideContainer.style.transition = 'none';
+        currentIndex = 0;
+        slideContainer.style.transform = `translateX(0px)`;
+      }
+    };
+
+    const prevSlide = () => {
+      currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+      updateSlider();
+    };
+
+    const nextSlide = () => {
+      currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+      updateSlider();
+    };
+
+    const startAutoSlide = () => {
+      autoSlide = setInterval(nextSlide, 3000);
+    };
+
+    const stopAutoSlide = () => {
+      clearInterval(autoSlide);
+    };
+
+    document.getElementById('prev').addEventListener('click', () => {
+      stopAutoSlide();
+      prevSlide();
+      startAutoSlide();
+    });
+
+    document.getElementById('next').addEventListener('click', () => {
+      stopAutoSlide();
+      nextSlide();
+      startAutoSlide();
+    });
+
+    slideContainer.addEventListener('transitionend', handleTransitionEnd);
+
+    document.getElementById('slider').addEventListener('mouseenter', stopAutoSlide);
+    document.getElementById('slider').addEventListener('mouseleave', startAutoSlide);
+
+    startAutoSlide();
+  </script>
+</body>
+
+</html>

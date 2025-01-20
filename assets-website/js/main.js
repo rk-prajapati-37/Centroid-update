@@ -282,6 +282,126 @@
   });
   //
 
+  //
+
+  // Configuration
+  // Configuration
+  const apiKey = "AIzaSyA8YAtBYQoUhdNDCDwlDKRWYEGKLoV7mTc";
+  const sheetId = "1PDjYMBaFE-B1Ve_b11RgPNQzyWZjxPoh-TubXRaluGU";
+  const range = "RK_Google_Revice_Testimonial";
+
+  // Fetch Google Reviews Data
+  // Fetch Google Reviews Data
+  async function fetchGoogle_revices() {
+    try {
+      const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log("Fetched Data:", data); // Check the data structure
+      return data.values || [];
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      return [];
+    }
+  }
+
+  // Create Carousel Items
+  // Create Carousel Items
+  function createCarouselItems(google_revices) {
+    const carousel = $("#google-revice-carousel");
+    carousel.empty(); // Clear any existing items to avoid duplication
+
+    // If no data or insufficient rows
+    if (google_revices.length <= 1) {
+      carousel.append(`
+            <div class="item">
+                <h3 class="testimonial-text">No reviews available at the moment.</h3>
+                <div class="author-info">
+                    <div class="author-text">
+                        <strong>Anonymous</strong>
+                    </div>
+                </div>
+            </div>
+        `);
+      return;
+    }
+
+    // Append each testimonial as an item
+    google_revices.slice(1).forEach((testimonial) => {
+      const fullText = testimonial[0] || "No testimonial text available.";
+      const authorName = testimonial[1] || "Anonymous";
+      const authorImage =
+        testimonial[2] ||
+        "https://www.thecore.in/h-upload/2024/09/20/980429-coreiconwhite.png";
+      const authorPosition = testimonial[3] || "";
+      const StarRating = testimonial[4] || "";
+      const item = `
+            <div class="item">
+            <div class="testimonial-card">
+               
+                <div class="author-info">
+                    <div class="author-text">
+                      <div class="author-img">
+                        <img src="${authorImage}" alt="${authorName}">
+                      </div>
+                        <strong>${authorName}</strong><br>
+                        ${
+                          authorPosition
+                            ? `<span> ${authorPosition}</span>`
+                            : ""
+                        }
+                    </div>
+                    
+                    <div class="quote"><img src=" ./assets-website/img/social-icon/google.png" alt="Quote"></div>
+                </div>
+                <div class="star-rating-icon"> ${StarRating}</div>
+ <h3 class="testimonial-text">${fullText}</h3>
+
+            </div>
+        `;
+      carousel.append(item); // Append item to the carousel container
+    });
+  }
+
+  // Initialize Carousel
+  $(document).ready(function () {
+    fetchGoogle_revices().then((google_revices) => {
+      createCarouselItems(google_revices);
+
+      // Destroy any existing carousel (if already initialized)
+      const carousel = $("#google-revice-carousel");
+      if (carousel.hasClass("owl-loaded")) {
+        carousel.trigger("destroy.owl.carousel");
+        carousel.removeClass("owl-loaded");
+        carousel.find(".owl-stage-outer").children().unwrap(); // Remove leftover wrappers
+      }
+
+      // Reinitialize the carousel
+      carousel.owlCarousel({
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        nav: true,
+        navText: [
+          "<i class='fas fa-chevron-left'></i>",
+          "<i class='fas fa-chevron-right'></i>",
+        ],
+        dots: true,
+        responsive: {
+          0: { items: 1 },
+          600: { items: 2 },
+          1000: { items: 3 },
+        },
+      });
+    });
+  });
+
+  //
+
   // Porfolio isotope and filter
   $(window).on("load", function () {
     var portfolioIsotope = $(".portfolio-container").isotope({
