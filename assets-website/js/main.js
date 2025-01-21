@@ -317,6 +317,7 @@
     // If no data or insufficient rows
     if (google_revices.length <= 1) {
       carousel.append(`
+        
             <div class="item">
                 <h3 class="testimonial-text">No reviews available at the moment.</h3>
                 <div class="author-info">
