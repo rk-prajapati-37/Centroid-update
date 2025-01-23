@@ -592,35 +592,35 @@ h3.testimonial-text::-webkit-scrollbar-thumb {
   gap: 10px;
 }
 
-.author-info .author-text strong {
+/* .author-info .author-text strong {
   font-family: var(--heading2-family);
   font-size: calc(var(--heading2-size) * 0.8);
   color: #ea246b;
-}
+} */
 
-.owl-carousel .author-text strong {
+/* .owl-carousel .author-text strong {
   font-size: 16px;
   color: #333;
-}
+} */
 
-.owl-nav {
+/* .owl-nav {
   display: flex;
   justify-content: space-between;
   position: absolute;
   top: 40%;
   width: 100%;
   transform: translateY(-50%);
-}
+} */
 
 .owl-carousel .owl-nav button.owl-next,
 .owl-carousel .owl-nav button.owl-prev {
-  background: transparent;
-  border: 1px solid !important;
-  border-radius: 50% !important;
-  padding: 5px !important;
-  color: #084a5a !important;
-  font-size: 20px !important;
-  display: none;
+  /* background: transparent; */
+  /* border: 1px solid !important; */
+  /* border-radius: 50% !important; */
+  /* padding: 5px !important; */
+  /* color: #084a5a !important; */
+  /* font-size: 20px !important; */
+  /* display: none; */
 }
 
 .owl-nav button:hover {
