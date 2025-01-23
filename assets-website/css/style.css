@@ -548,77 +548,77 @@ section {
 
 .about-us-banner {
     background: url(../img/inside-banner/about-us-banner.jpeg) no-repeat center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .admission-banner {
     background: url(../img/inside-banner/admission-banner.jpg) no-repeat center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .engineering-banner {
     background: url(../img/inside-banner/engineering-banner.jpg) no-repeat center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .olympiad-banner {
     background: url(../img/inside-banner/olympiad-banner.jpg) no-repeat center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .foundation-banner {
     background: url(../img/inside-banner/foundation-banner.jpg) no-repeat center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .test-planner-banner {
     background: url(../img/inside-banner/test-planner-banner.jpeg) no-repeat center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .downloads-banner {
     background: url(../img/inside-banner/downloads-banner.jpg) no-repeat center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .result-banner {
     background: url(../img/inside-banner/result-banner.jpg) no-repeat center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .gallery-banner {
     background: url(../img/inside-banner/gallery-banner.jpg) no-repeat center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .contact-us-banner {
     background: url(../img/inside-banner/contact-us-banner.jpg) no-repeat center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .testimonials-banner {
     background: url(../img/inside-banner/testimonials-banner.jpg) no-repeat center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .mentorship-banner {
     background: url(../img/inside-banner/mentorship-banner.jpeg) no-repeat center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .time-table-banner {
     background: url(../img/inside-banner/time-table-banner.jpeg) no-repeat center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .our-team-banner {
     background: url(../img/inside-banner/our-team-banner.jpeg) no-repeat center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .medical-banner {
     background: url(../img/inside-banner/medical-banner.jpg) no-repeat center;
-    background-size: cover;
+    background-size: contain;
 }
 
 /*--------------------------------------------------------------  # Why Us  --------------------------------------------------------------*/
@@ -779,7 +779,7 @@ section {
 
 .about .video-box {
     background: url("../img/about-img.jpg") center center no-repeat;
-    background-size: cover;
+    background-size: contain;
     min-height: 500px;
 }
 
@@ -1006,7 +1006,7 @@ section {
     padding: 160px 20px 20px 20px;
     position: relative;
     width: 100%;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
 }
