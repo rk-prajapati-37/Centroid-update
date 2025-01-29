@@ -750,7 +750,14 @@ div#customers-testimonials.owl-carousel .owl-stage-outer .item{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
+/* result Page */
+h2.aos-init.aos-animate {
+  background-color: #067387;
+  padding: 10px;
+  color: #fff;
+  border-radius: 20px;
+  margin: 0 auto;
+}
 
 /* Responsive Design */
 @media (max-width: 1024px) {
