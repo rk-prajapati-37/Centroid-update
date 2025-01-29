@@ -741,10 +741,10 @@ div#customers-testimonials.owl-carousel .owl-stage-outer .item{
 
 
 
-/* .image-section {
-  max-width: 50%;
-} */
-.image-section img {
+.result-pst-image-section{
+  padding: 10px;
+}
+.result-pst-image-section img {
   width: 100%;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
