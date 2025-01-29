@@ -739,7 +739,9 @@ div#customers-testimonials.owl-carousel .owl-stage-outer .item{
 
 /* Testimonial Section End */
 
-
+section#about.result-post-banner {
+  padding: 20px 0;
+}
 
 .result-pst-image-section{
   padding: 10px;
