@@ -24,8 +24,8 @@
   position: absolute;
   width: 100%;
   opacity: 0;
-  animation: fadeSlide 9s linear infinite; /* Infinite animation */
-  background: radial-gradient(circle farthest-corner at center center, #fcd801 70%, #F8A90F 100%);
+  animation: fadeSlide 9s linear infinite;
+  background: radial-gradient(circle farthest-corner at center center, #F6A81B 70%, #FAD701 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
@@ -64,6 +64,53 @@
 .changing-text span:nth-child(3) {
   animation-delay: 6s;
 }
+
+/*  */
+
+.particular-box:hover {
+  background: radial-gradient(circle farthest-corner at center center, #fcd801 70%, #F8A90F 100%); 
+  border-radius: 20px;
+}
+
+/*  */
+/* .particular-box{
+padding: 30px 0;
+border-radius: 10px;
+overflow: hidden;
+background: linear-gradient(180deg, rgba(227, 242, 245, 1) 45%, #f6a81b 65%);
+box-shadow: 3px 3px 10px #e5a017;
+} */
+
+
+.partrk-box:before, .partrk-box:after {
+  content: '';
+  box-shadow: 0 4px #fff;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  bottom: 10px;
+  right: 10px;
+  z-index: -1;
+  border-radius: 20px 0px 20px 0px;
+  color: #fff;
+  background: linear-gradient(180deg, #067789 45%, #067789 65%);
+}
+.why-us .icon-boxes .icon-box p {
+  font-size: 15px;
+  font-weight: 600;
+  padding: 0px 15px;
+  min-height: 112px;
+  background: radial-gradient(circle farthest-corner at center center, #FAD701 70%, #f6a81b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.why-us .icon-boxes .icon-box h4 {
+  color: #fff !important;
+}
+a.explore-btn{
+  background-color: #067789 !important;
+}
+
 
 /* YouTuble-Video-Section */
 .ytv-video-section-rk {
@@ -332,11 +379,37 @@
 }
 
 .enquiry-frame-rk{
-  background-color: #2c4c5b;
+
   padding: 30px 0;
   border-radius: 10px;
   overflow: hidden;
+  background: linear-gradient(180deg, rgba(227, 242, 245, 1) 45%, #f6a81b 65%);
+  box-shadow: 3px 3px 10px #e5a017;
 }
+
+.enquiry-frame-rk:before, .enquiry-frame-rk:after {
+  content: '';
+  box-shadow: 0 4px #fff;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  bottom: 10px;
+  right: 10px;
+  z-index: -1;
+  border-radius: 20px 0px 20px 0px;
+  color: #fff;
+  background-color: #067789;
+}
+.enquiry-frame-rk:hover{
+  padding: 30px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f6a81b 45%, rgba(227, 242, 245, 1) 65%);
+  box-shadow: 3px 3px 10px #f6a81b;
+}
+
+
+
 .enquiry-frame-rk .form-control {
   transition: none;
   background: radial-gradient(circle farthest-corner at center center, #fcd801 70%, #F8A90F 100%);
@@ -362,11 +435,11 @@
   margin-top: 1.9rem;
 }
 .row.contact-from-home h4.title {
-  /* transition: none;
-  background: radial-gradient(circle farthest-corner at center center, #084a5a 30%, #f8aa0f 100%);
+  transition: none;
+  background: radial-gradient(circle farthest-corner at center center, #fcd801 70%, #F8A90F 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  border-color: transparent; */
+  border-color: transparent;
   margin-bottom: 10px;
   margin-left: 0;
   font-size: 30px;
