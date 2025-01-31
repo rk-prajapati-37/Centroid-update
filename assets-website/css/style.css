@@ -2579,31 +2579,31 @@ blockquote::after {
     height: 250px;
     padding: 60px 30px;
     margin: 0 auto;
-    border: 3px solid #ff2828;
+    border: 3px solid #084a5a;
     border-top-color: transparent;
     border-right-color: transparent;
     border-left-color: transparent;
-    border-radius: 50%;
+    border-radius: 15% 0;
     position: relative;
     z-index: 1;
 }
 
-.counter:before,
-.counter:after {
+.counter:before, .counter:after {
     content: '';
-    background: #ff2828;
-    border-radius: 50%;
-    box-shadow: 0 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px #fff;
     position: absolute;
     left: 10px;
     top: 10px;
     bottom: 10px;
     right: 10px;
     z-index: -1;
+    border-radius: 20px 0px 20px 0px;
+    color: #fff;
+    background: linear-gradient(180deg, rgba(227, 242, 245, 1) 45%, rgba(255, 234, 53, 1) 65%);
 }
 
 .counter:after {
-    background: #fff;
+    background: #084a5a;
     left: 25px;
     top: 25px;
     bottom: 25px;
@@ -2615,6 +2615,10 @@ blockquote::after {
     font-size: 35px;
     line-height: 35px;
     margin: 0 0 13px;
+    background: radial-gradient(circle farthest-corner at center center, #fcd801 70%, #F8A90F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
 }
 
 .counter h3 {
@@ -2623,6 +2627,9 @@ blockquote::after {
     font-weight: 500;
     text-transform: capitalize;
     margin: 0 0 8px;
+    background: radial-gradient(circle farthest-corner at center center, #fcd801 70%, #F8A90F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .counter .counter-value {
@@ -2631,13 +2638,16 @@ blockquote::after {
     font-weight: 600;
     display: block;
     position: relative;
+    background: radial-gradient(circle farthest-corner at center center, #fcd801 70%, #F8A90F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .counter .counter-value::after {
     content: "+";
 }
 
-.counter.blue {
+/* .counter.blue {
     border-bottom-color: #00a8e0;
 }
 
@@ -2671,7 +2681,7 @@ blockquote::after {
 
 .counter.purple h3 {
     color: #4f31aa;
-}
+} */
 
 @media screen and (max-width:990px) {
     .counter {
