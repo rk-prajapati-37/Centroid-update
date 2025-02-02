@@ -877,8 +877,259 @@ h2.aos-init.aos-animate {
 
 /* about-our-team-page start */
 
+.special-teacher-container {
+  background: #067789;
+  padding: 40px;
+}
+.special-teacher-wrapper {
+  max-width: 1200px;
+  margin: auto;
+}
+.special-teacher-header {
+  text-align: left;
+  padding: 20px;
+  position: relative;
+  -moz-box-shadow: -5px 7px 5px rgba(0, 0, 0, 0.8);
+  box-shadow: -5px 7px 5px rgba(0, 0, 0, 0.8);
+  border: 2px solid #f8aa0f;
+}
+
+.special-teacher-header:before {
+  content: "";
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: 0px;
+  height: 0px;
+  border-bottom: 70px solid #eee;
+  border-right: 70px solid transparent;
+  -webkit-box-shadow: -7px 7px 7px rgba(0,0,0,0.3);
+  -moz-box-shadow: -7px 7px 7px rgba(0,0,0,0.3);
+  box-shadow: -7px 7px 7px rgba(0,0,0,0.3);
+}
+ 
+.special-teacher-header:after {
+  content: "";
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: 0px;
+  height: 0px;
+  border-top: 69px solid #272822; 
+  border-left: 69px solid transparent;
+}
+
+
+.special-teacher-title {
+  font-weight: 700;
+  background: radial-gradient(circle, #fcd801 70%, #F8A90F 100%);
+  width: 45%;
+  padding: 10px;
+  margin: 0;
+}
+.special-teacher-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.special-teacher-card {
+  flex: 1;
+  padding: 25px;
+  color: #fff;
+  border: 2px solid #F8A90F;
+  border-radius: 2px 25px;
+}
+.special-teacher-card.aos-init.aos-animate {
+  border-radius: 0 20px;
+  box-shadow: -5px -1px 5px 5px #f8aa0f;
+}
+.special-teacher-info {
+  border-bottom: 2px solid #F8A90F;
+  margin-bottom: 10px;
+}
+.special-teacher-name {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.special-teacher-summary p{
+  font-weight: 500;
+}
+.special-teacher-image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* card */
+.our-all-card-teacher-header:before {
+  content: "";
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: 0px;
+  height: 0px;
+  border-bottom: 70px solid #eee;
+  border-right: 70px solid transparent;
+  -webkit-box-shadow: -7px 7px 7px rgba(0,0,0,0.3);
+  -moz-box-shadow: -7px 7px 7px rgba(0,0,0,0.3);
+  box-shadow: -7px 7px 7px rgba(0,0,0,0.3);
+}
+ 
+.our-all-card-teacher-header:after {
+  content: "";
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: 0px;
+  height: 0px;
+  border-top: 69px solid #067789; 
+  border-left: 69px solid transparent;
+}
+
+
+.our-all-card-teacher-header {
+  font-weight: 700;
+  background: radial-gradient(circle, #067789 70%, #003C4A 100%);
+  padding: 1px 10px;
+  margin: 0;
+}
+
+h3.our-all-card-teacher-title,  .our-all-card-teacher-post{
+  background: radial-gradient(circle farthest-corner at center center, #fcd801 70%, #F8A90F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* span.our-all-card-teacher-post {
+  padding: 0px 3px;
+  margin: 0;
+  font-size: small;
+} */
+p.our-all-card-teacher-post {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+
 
 /* about-our-team-page End */
+
+
+
+/* pdf Section Start */
+
+.Practical-brochure-pdf iframe {
+  width: 100%;
+  height: 100%;
+}
+
+ /* === Mobile PDF Viewer === */
+ .mobile-pdf-viewer {
+  display: none; /* Default: Hide on desktop */
+  position: relative;
+  width: 360px;
+  height: 640px;
+  border: 16px black solid;
+  border-top-width: 60px;
+  border-bottom-width: 60px;
+  border-radius: 36px;
+  background: white;
+  overflow: hidden;
+}
+
+.mobile-pdf-viewer:before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 5px;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #333;
+  border-radius: 10px;
+}
+
+.mobile-pdf-viewer:after {
+  content: '';
+  display: block;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  left: 50%;
+  bottom: -65px;
+  transform: translate(-50%, -50%);
+  background: #333;
+  border-radius: 50%;
+}
+
+/* === Desktop PDF Viewer === */
+.desktop-pdf-viewer {
+  display: block;
+  position: relative;
+  width: 900px;
+  height: 550px;
+  border: 20px black solid;
+  border-radius: 10px;
+  background: #F5F5F5;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.desktop-pdf-viewer:before {
+  content: 'MacBook Pro';
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+}
+
+.desktop-screen, .mobile-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.pdf-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  transform: scale(1.05); /* Zoom-in to fit full frame */
+  transform-origin: center;
+}
+
+/* === Responsive View Switching === */
+@media (max-width: 768px) {
+  .mobile-pdf-viewer {
+      display: block;
+  }
+  .desktop-pdf-viewer {
+      display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .desktop-pdf-viewer {
+      display: block;
+  }
+  .mobile-pdf-viewer {
+      display: none;
+  }
+}
+
+
+
+
+
+/* pdf Section End */
+
 
 /* Responsive Design */
 @media (max-width: 1024px) {
