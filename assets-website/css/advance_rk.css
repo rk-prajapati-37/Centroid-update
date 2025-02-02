@@ -1,6 +1,6 @@
 .tagline-txt {
   margin: 20px auto;
-  /* background-color: #084a5a; */
+  /* background-color: #067789; */
   box-shadow: none;
   background-image: url(../img/inside-banner/tagline-txt-rk.png);
   background-repeat: no-repeat;
@@ -13,7 +13,7 @@
   font-size: 2rem;
   font-weight: bold;
   /* text-align: center; */
-  /* color: #084a5a; */
+  /* color: #067789; */
   color: #fff;
   overflow: hidden; /* Ensure the text doesn't overflow */
   height: 5.5rem; /* Adjust height to match font size */
@@ -137,7 +137,7 @@ a.explore-btn{
 .ytv-video-section-rk .tab-button {
   padding: 10px 20px;
   background: radial-gradient(circle farthest-corner at center center, #fcd801 70%, #F8A90F 100%);
-  color: #084a5a;
+  color: #067789;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -148,7 +148,7 @@ a.explore-btn{
 
 .ytv-video-section-rk .tab-button.active {
   color: #fff;
-  background: #084a5a;
+  background: #067789;
 }
 
 .ytv-video-section-rk .playlist-content {
@@ -192,7 +192,7 @@ a.explore-btn{
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
-  background-color: #084a5a;
+  background-color: #067789;
 }
 
 /* .ytv-video-section-rk .video-thumbnail img {
@@ -213,9 +213,9 @@ a.explore-btn{
   margin: 0;
   line-height: 1.4;
   font-weight: normal;
-  background-color: #084a5a;
+  background-color: #067789;
   padding: 15px 10px;
-  border: 0px solid #084a5a;
+  border: 0px solid #067789;
 }
 .ytv-video-section-rk .video-thumbnail p.video-title span {
   background: radial-gradient(circle farthest-corner at center center, #fcd801 70%, #F8A90F 100%);
@@ -246,7 +246,7 @@ a.explore-btn{
   align-content: center;
   width: 60px;
   height: 60px;
-  background: radial-gradient(#084a5a 50%, rgb(255 217 0) 52%);
+  background: radial-gradient(#067789 50%, rgb(255 217 0) 52%);
   border-radius: 50%;
   display: block;
   position: absolute;
@@ -457,7 +457,7 @@ a.explore-btn{
 
 
 section#hands-on-science {
-  background: #2c4c5b;
+  background: #067789;
 }
 h2.mb-0.hds-sci-title{
   color: #fff;
@@ -475,7 +475,7 @@ section#hands-on-science .col-xl-9 {
   align-items: flex-start;
   position: relative;
   padding: 1rem 2rem;
-  background: rgba(0, 128, 128, 0.1);
+  background: #067789;
   border-radius: 8px;
 }
 
@@ -497,6 +497,19 @@ section#hands-on-science .col-xl-9 {
   overflow: hidden;
   margin-top: 1rem;
 }
+.video-wrapper-bord-line::before, .video-wrapper-bord-line::after {
+  content: '';
+  box-shadow: 0 4px #fff;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  bottom: 10px;
+  right: 10px;
+  z-index: -1;
+  border-radius: 20px 0px 20px 0px;
+  color: #fff;
+  background: linear-gradient(180deg, #067789 45%, #f6a81b 65%);
+}
 
 .video-wrapper iframe {
   position: absolute;
@@ -505,6 +518,19 @@ section#hands-on-science .col-xl-9 {
   width: 100%;
   height: 100%;
   border-radius: 8px;
+}
+.powered-tit-txt h4 {
+  color: #067789;
+  font-size: larger;
+  font-weight: 700;
+  line-height: 1.5;
+  padding-left: 1%;
+}
+.powered-tit-txt h5 {
+  font-size: smaller;
+  font-weight: 700;
+  text-align: end;
+  padding-right: 1%;
 }
 
 .right-content-section {
@@ -603,7 +629,7 @@ div#google-revice-carousel.owl-carousel {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-bottom: 2px solid #084a5a;
+  border-bottom: 2px solid #067789;
   background: #fff;
   color: #000;
   height: 320px;
@@ -641,7 +667,7 @@ h3.testimonial-text::-webkit-scrollbar {
   width: 5px;
 }
 h3.testimonial-text::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px #084a5a; 
+  box-shadow: inset 0 0 5px #067789; 
   border-radius: 10px;
 }
 
@@ -712,10 +738,10 @@ h3.testimonial-text::-webkit-scrollbar-thumb {
 
 /* Testimonial Section Start */
 .shadow-effect {
-  height: 300px;
+  height: 330px;
   text-align: center;
   padding: 20px;
-  background: #fff;
+  background: #067789;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
@@ -727,15 +753,17 @@ h3.testimonial-text::-webkit-scrollbar-thumb {
 
 /* Testimonial Image */
 .shadow-effect img.popup-trigger {
-  height: 150px;
+  height: 200px;
   object-fit: cover;
   border-radius: 10px;
   cursor: pointer;
   overflow: hidden;
 }
-div#customers-testimonials.owl-carousel .owl-stage-outer .item{
+div#customers-testimonials.owl-carousel .owl-stage-outer .item {
   padding: 0px;
-  height: 305px;
+  height: 350px;
+  background-color: #f6a81b;
+  border: 3px solid #f6a81b;
 }
 /* Author Info */
 
@@ -751,9 +779,21 @@ div#customers-testimonials.owl-carousel .owl-stage-outer .item{
   margin-top: 15px;
 }
 
+
+div#customers-testimonials .author-info .author-img {
+  box-shadow: 1px 1px 1px 1px #9c9c9c;
+}
+div#customers-testimonials .author-info {
+  background: radial-gradient(circle farthest-corner at center center, #fcd801 70%, #F8A90F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
 .author-info h3.author-nm {
   width: 100%;
 }
+
 
 .author-info .author-img {
   width: 80px !important;
@@ -769,9 +809,9 @@ div#customers-testimonials.owl-carousel .owl-stage-outer .item{
 }
 
 .item-details p {
-  font-size: 14px;
-  color: #777;
-  margin-top: 5px;
+  font-size: 12.5px;
+  margin: 2px auto;
+  border-top: 1px solid #eda21a;
 }
 
 /* Popup Styling */
@@ -833,6 +873,12 @@ h2.aos-init.aos-animate {
   border-radius: 20px;
   margin: 0 auto;
 }
+
+
+/* about-our-team-page start */
+
+
+/* about-our-team-page End */
 
 /* Responsive Design */
 @media (max-width: 1024px) {
