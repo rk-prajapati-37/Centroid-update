@@ -3309,17 +3309,17 @@ button.close:hover {
         height: auto;
         padding: 20px 0px;
         margin: 0 auto;
-        border: 0px solid #ff2828;
+        /* border: 0px solid #ff2828; */
         margin-bottom: 30px;
     }
 
     .counter:before,
     .counter:after {
-        content: '';
+        /* content: '';
         background: #ff2828;
         border-radius: 0;
         box-shadow: 0 4px rgb(0 0 0 / 20%);
-        position: absolute;
+        position: absolute; */
         left: 0px;
         top: 0px;
         bottom: 0px;
@@ -3328,7 +3328,7 @@ button.close:hover {
     }
 
     .counter:after {
-        background: #fff;
+        /* background: #fff; */
         left: 5px;
         top: 5px;
         bottom: 5px;
@@ -3413,17 +3413,17 @@ button.close:hover {
         height: auto;
         padding: 20px 0px;
         margin: 0 auto;
-        border: 0px solid #ff2828;
+        /* border: 0px solid #ff2828; */
         margin-bottom: 30px;
     }
 
     .counter:before,
     .counter:after {
-        content: '';
+        /* content: '';
         background: #ff2828;
         border-radius: 0;
         box-shadow: 0 4px rgb(0 0 0 / 20%);
-        position: absolute;
+        position: absolute; */
         left: 0px;
         top: 0px;
         bottom: 0px;
@@ -3432,7 +3432,7 @@ button.close:hover {
     }
 
     .counter:after {
-        background: #fff;
+        /* background: #fff; */
         left: 5px;
         top: 5px;
         bottom: 5px;
