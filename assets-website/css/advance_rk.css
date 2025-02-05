@@ -1109,6 +1109,29 @@ p.our-all-card-teacher-post {
   transform-origin: center;
 }
 
+
+/* contact Map Start*/
+
+.mapouter {
+  position: relative;
+  text-align: right;
+  width: 100%;
+  height: 300px;
+}
+
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  width: 100%;
+  height: 300px;
+}
+
+.gmap_iframe {
+  width: 100% !important;
+  height: 300px !important;
+}
+/* Contact Map End */
+
 /* === Responsive View Switching === */
 @media (max-width: 768px) {
   .mobile-pdf-viewer, .special-teacher-mobile-screen {
