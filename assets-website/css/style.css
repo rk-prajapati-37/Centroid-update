@@ -547,17 +547,17 @@ section {
 }
 
 .about-us-banner {
-    background: url(../img/inside-banner/about-us-banner.jpeg) no-repeat center;
+    background: url(../img/inside-banner/about-us-banner.png) no-repeat center;
     background-size: contain;
 }
 
 .admission-banner {
-    background: url(../img/inside-banner/admission-banner.jpg) no-repeat center;
+    background: url(../img/inside-banner/admission-banner.png) no-repeat center;
     background-size: contain;
 }
 
 .engineering-banner {
-    background: url(../img/inside-banner/engineering-banner.jpg) no-repeat center;
+    background: url(../img/inside-banner/engineering-banner.png) no-repeat center;
     background-size: contain;
 }
 
@@ -567,7 +567,7 @@ section {
 }
 
 .foundation-banner {
-    background: url(../img/inside-banner/foundation-banner.jpg) no-repeat center;
+    background: url(../img/inside-banner/foundation-banner.png) no-repeat center;
     background-size: contain;
 }
 
@@ -582,17 +582,17 @@ section {
 }
 
 .result-banner {
-    background: url(../img/inside-banner/result-banner.jpg) no-repeat center;
+    background: url(../img/inside-banner/result-banner.png) no-repeat center;
     background-size: contain;
 }
 
 .gallery-banner {
-    background: url(../img/inside-banner/gallery-banner.jpg) no-repeat center;
+    background: url(../img/inside-banner/gallery-banner.png) no-repeat center;
     background-size: contain;
 }
 
 .contact-us-banner {
-    background: url(../img/inside-banner/contact-us-banner.jpg) no-repeat center;
+    background: url(../img/inside-banner/contact-us-banner.png) no-repeat center;
     background-size: contain;
 }
 
@@ -617,7 +617,7 @@ section {
 }
 
 .medical-banner {
-    background: url(../img/inside-banner/medical-banner.jpg) no-repeat center;
+    background: url(../img/inside-banner/medical-banner.png) no-repeat center;
     background-size: contain;
 }
 
