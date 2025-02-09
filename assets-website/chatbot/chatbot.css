@@ -16,8 +16,8 @@
 /* Chatbot Toggler Button */
 .chatbot-toggler {
   position: fixed;
-  bottom: 30px;
-  right: 70px;
+  bottom: 7px;
+  right: 60px;
   outline: none;
   border: none;
   height: 75px;
@@ -27,8 +27,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: linear-gradient(45deg, #084a5a, #084a5a); /* Gradient effect */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(45deg, #084a5a00, #084a5a00); /* Gradient effect */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.5s ease; /* Smooth transition */
   z-index: 9999;
 }
