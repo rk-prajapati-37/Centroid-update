@@ -291,8 +291,11 @@ header a:hover {
   .chatbot header span.close-btn {
     display: block; /* Make sure it's visible */
      right: 10px;
+     cursor: pointer;
     /* top: 10px; Adjust the top position */
   }
+
+  
 }
 
 
@@ -405,7 +408,7 @@ li.chat{
   
   .lang-option {
     width: 100%;
-    text-align: center;
+    /* text-align: center; */
   }
 }
 

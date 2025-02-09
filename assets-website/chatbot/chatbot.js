@@ -1,9 +1,33 @@
 document.addEventListener('DOMContentLoaded', function () {
+  // Add these prompts to your language constants at the top
+  const LANGUAGES = {
+    en: {
+      // ... existing language entries ...
+      schoolPrompt: 'Please provide your school name:',
+      queryPrompt: 'How may we assist you today? Please share your query:'
+    },
+    hi: {
+      // ... existing language entries ...
+      schoolPrompt: 'कृपया अपने स्कूल का नाम बताएं:',
+      queryPrompt: 'हम आपकी कैसे सहायता कर सकते हैं? कृपया अपना प्रश्न साझा करें:'
+    },
+    mr: {
+      // ... existing language entries ...
+      schoolPrompt: 'कृपया तुमच्या शाळेचे नाव सांगा:',
+      queryPrompt: 'आम्ही तुमची कशी मदत करू शकतो? कृपया तुमची शंका शेअर करा:'
+    }
+  };
   let selectedLanguage = localStorage.getItem('selectedLanguage'); // Check for saved language
   let userSelections = JSON.parse(localStorage.getItem('userSelections')) || {};
   // Function to store user's selection in the object and localStorage
   // Function to store user's selection in the object and localStorage
-  function storeUserSelection(key, value) {
+  function storeUserSelection(key, value, questionType) {
+    console.log(key, value, questionType);
+    if (questionType == "course") {
+      course = value;
+    } else if (questionType == "standard") {
+      standard = value;
+    }
     let userSelections = JSON.parse(localStorage.getItem('userSelections')) || {};
     userSelections[key] = value;
     localStorage.setItem('userSelections', JSON.stringify(userSelections));
@@ -22,10 +46,70 @@ document.addEventListener('DOMContentLoaded', function () {
     return userSelections[key];
   }
 
+  async function sendEnquiry({
+    name,
+    email,
+    phoneNumber,
+    language,
+    course,
+    standard,
+    school,
+    query
+  }) {
+    const url = "https://centroid-mailer.vercel.app/api/centroid/enquiry";
 
-  function displayEndMessage(type) {
+    const payload = {
+      name,
+      email,
+      phoneNumber,
+      language,
+      course,
+      standard,
+      school,
+      query
+    };
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.text(); // or response.json() if JSON response is expected
+      console.log("Response:", data);
+      return data;
+    } catch (error) {
+      console.error("Error sending enquiry:", error.message);
+      throw error;
+    }
+  }
+
+
+  async function displayEndMessage(type) {
     let supportMessageHTML = '';
     let selectedLanguage = localStorage.getItem('selectedLanguage');
+     // Creating enquiryData using globally defined variables
+     const enquiryData = {
+      name,
+      email,
+      phoneNumber,
+      language,
+      course,
+      standard,
+      school,
+      query
+  };
+
+  console.log("Sending Enquiry:", JSON.stringify(enquiryData, null, 2));
+
+ 
 
     if (type == "support") {
       if (selectedLanguage == 'en') {
@@ -59,17 +143,21 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
         `;
       }
-  
+      try {
+          await sendEnquiry(enquiryData);
+      } catch (error) {
+          console.error("Failed to send enquiry:", error);
+      } // The '2' adds indentation for better readability
       // Insert the generated support message HTML
       chatbox.insertAdjacentHTML('beforeend', supportMessageHTML);
     } else {
       console.log("Invalid message type.");
       alert("Invalid message type.");
     }
-  
+
     localStorage.clear();
   }
-  
+
   // Dynamically inject the chatbot HTML structure into the page
   const chatbotHtml = `
   <button class="chatbot-toggler">
@@ -84,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="chatbot">
     <header>
       <h2>Centroid  Support <a href="tel:+918425900755">+91 84259 00755</a></h2>
-      <span class="close-btn material-symbols-outlined"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+      <span class="close-btn material-symbols-outlined" onclick="closeChatbot()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
       <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
     </svg></span>
     </header>
@@ -106,11 +194,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const sendChatBtn = document.querySelector(".chat-input span");
   const languageOptions = document.querySelectorAll('.lang-option');
 
-  let firstName = null;
-  let lastName = null;
+  let name = null;
   let email = null;
   let phoneNumber = null;
   let language = null;
+  let course = null;
+  let standard = null;
+  let school = null;
+  let query = null;
+  localStorage.clear();
   // Create a new chat list item with the provided message and class
   const createChatLi = (message, className) => {
     const chatLi = document.createElement("li");
@@ -154,25 +246,28 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!selectedLanguage) {
       // const languagePromptMessage = 'Please select your preferred language to continue.';
       // typeMessage(languagePromptMessage, "incoming");
-    } else if (!firstName) {
-      const namePromptMessage = selectedLanguage === 'en' ? 'What is your first name?' :
-        selectedLanguage === 'hi' ? 'आपका पहला नाम क्या है?' :
-          'तुमचं पहिले नाव काय आहे?';
+    } else if (!name) {
+      const namePromptMessage = selectedLanguage === 'en'
+        ? "May I know your name, please?"
+        : selectedLanguage === 'hi'
+          ? "क्या मैं आपका नाम जान सकता हूँ?"
+          : "कृपया तुमचं नाव सांगाल का?";
+
       typeMessage(namePromptMessage, "incoming");
-    } else if (!lastName) {
-      const lastNamePromptMessage = selectedLanguage === 'en' ? 'What is your last name?' :
-        selectedLanguage === 'hi' ? 'आपका उपनाम क्या है?' :
-          'तुमचं आडनाव काय आहे?';
-      typeMessage(lastNamePromptMessage, "incoming");
     } else if (!email) {
-      const emailPromptMessage = selectedLanguage === 'en' ? 'What is your email address?' :
-        selectedLanguage === 'hi' ? 'आपका ईमेल पता क्या है?' :
-          'तुमचं ईमेल काय आहे?';
+      const emailPromptMessage = selectedLanguage === 'en'
+        ? "Could you please share your email address?"
+        : selectedLanguage === 'hi'
+          ? "क्या आप कृपया अपना ईमेल पता साझा कर सकते हैं?"
+          : "कृपया तुमचं ईमेल सांगू शकता का?";
+
       typeMessage(emailPromptMessage, "incoming");
     } else if (!phoneNumber) {
-      const phonePromptMessage = selectedLanguage === 'en' ? 'What is your phone number?' :
-        selectedLanguage === 'hi' ? 'आपका फोन नंबर क्या है?' :
-          'तुमचा फोन नंबर काय आहे?';
+      const phonePromptMessage = selectedLanguage === 'en'
+        ? "May I kindly ask for your phone number?"
+        : selectedLanguage === 'hi'
+          ? "क्या आप कृपया अपना फोन नंबर साझा कर सकते हैं?"
+          : "कृपया तुमचा फोन नंबर सांगू शकता का?";
       typeMessage(phonePromptMessage, "incoming");
 
 
@@ -187,32 +282,30 @@ document.addEventListener('DOMContentLoaded', function () {
     let selectedLanguage = localStorage.getItem('selectedLanguage');
 
     if (storedUserDetails) {
-      firstName = storedUserDetails.firstName;
-      lastName = storedUserDetails.lastName;
+      name = storedUserDetails.name;
       email = storedUserDetails.email;
       phoneNumber = storedUserDetails.phoneNumber;
 
       // Greet the user with dynamic language-based response
       const welcomeMessage = selectedLanguage === 'en' ?
-        `Welcome back, ${firstName} ${lastName}!` :
+        `Welcome back, ${name}!` :
         selectedLanguage === 'hi' ?
-          `स्वागत है, ${firstName} ${lastName}!` :
-          `स्वागत आहे, ${firstName} ${lastName}! `;
+          `स्वागत है, ${name} !` :
+          `स्वागत आहे, ${name} ! `;
 
       chatbox.appendChild(createChatLi(welcomeMessage, "incoming"));
     } else {
       // If user details are not stored, greet the new user and continue with the flow
       const newUserMessage = selectedLanguage === 'en' ?
-        `Nice to meet you, ${firstName} ${lastName}! Thank you for providing information` :
+        `Nice to meet you, ${name}! Thank you for providing information` :
         selectedLanguage === 'hi' ?
-          `आपसे मिलकर खुशी हुई, ${firstName} ${lastName}! जानकारी प्रदान करने के लिए धन्यवाद` :
-          `तुमचं स्वागत आहे, ${firstName} ${lastName}! माहिती दिल्याबद्दल धन्यवाद`;
+          `आपसे मिलकर खुशी हुई, ${name}! जानकारी प्रदान करने के लिए धन्यवाद` :
+          `तुमचं स्वागत आहे, ${name}! माहिती दिल्याबद्दल धन्यवाद`;
 
       chatbox.appendChild(createChatLi(newUserMessage, "incoming"));
 
       localStorage.setItem('userDetails', JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
+        name: name,
         email: email,
         phoneNumber: phoneNumber,
         language: language
@@ -230,14 +323,32 @@ document.addEventListener('DOMContentLoaded', function () {
           'कृपया तुमचा अभ्यासक्रम निवडा:';
 
 
-      const courseOptions = ['ENGINEERING', 'NEET UG', 'SRIJAN BATCH (FOUNDATION COURSE)', 'OLYMPIADS'];
+      const courseOptions = ['ENGINEERING', 'NEET UG', 'SRIJAN BATCH (FOUNDATION COURSE)', 'OLYMPIADS', 'OTHERS'];
+      // below addd other prompts and options
+      const standardPromptMessage = selectedLanguage === 'en' ?
+        'Kindly select your standard:' :
+        selectedLanguage === 'hi' ?
+          'कृपया अपनी कक्षा चुनें।' :
+          'कृपया तुमची इयत्ता निवडा.';
 
+
+
+      const standardOptions = ['7th Standard', '8th Standard', '9th Standard', '10th Standard', 'OTHERS'];
+      // MAKE TWO PROMPTS AND THEIR 
 
       // On selection, store class and move to the next step
       addSelectableOptions(coursePromptMessage, courseOptions, (selectedClass) => {
-        storeUserSelection('selectedClass', selectedClass); // Store the selected class
+        storeUserSelection('selectedClass', selectedClass, "course"); // Store the selected class
+        addSelectableOptions(standardPromptMessage, standardOptions, (selectedClass) => {
+          storeUserSelection('selectedClass', selectedClass, "standard"); // Store the selected class
+          if (!school) {
+            const schoolPrompt = LANGUAGES[selectedLanguage].schoolPrompt;
+            typeMessage(schoolPrompt, "incoming");
+          }
+          // displayEndMessage("support");
 
-          displayEndMessage("support");
+        });
+        // displayEndMessage("support");
 
       });
     } else {
@@ -315,14 +426,10 @@ document.addEventListener('DOMContentLoaded', function () {
   function processUserMessage(userMessage) {
     let selectedLanguage = localStorage.getItem('selectedLanguage');
     console.log(selectedLanguage);
-    
-    if (!firstName) {
-      firstName = userMessage;
+
+    if (!name) {
+      name = userMessage;
       // typeMessage('Got your first name!', "incoming");
-      generateResponse();
-    } else if (!lastName) {
-      lastName = userMessage;
-      // typeMessage('Got your last name!', "incoming");
       generateResponse();
     } else if (!email) {
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -358,14 +465,22 @@ document.addEventListener('DOMContentLoaded', function () {
         // Trigger the response
         typeMessage(phoneValidationMessage, "incoming");
       }
+    } else if (!school) {
+      school = userMessage;
+      if (!query) {
+        const queryPrompt = LANGUAGES[selectedLanguage].queryPrompt;
+        typeMessage(queryPrompt, "incoming");
+      }
+    } else if (!query) {
+      query = userMessage;
+      displayEndMessage("support");
     }
   }
 
   // Check if user details exist in local storage
   const storedUserDetails = JSON.parse(localStorage.getItem('userDetails'));
   if (storedUserDetails) {
-    firstName = storedUserDetails.firstName;
-    lastName = storedUserDetails.lastName;
+    name = storedUserDetails.name;
     email = storedUserDetails.email;
     phoneNumber = storedUserDetails.phoneNumber;
     language = storedUserDetails.language;
@@ -415,12 +530,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function closeChatbot() {
     // Clear local storage and reset variables
     localStorage.clear();
-    firstName = null;
-    lastName = null;
+    name = null;
     email = null;
     phoneNumber = null;
     language = null;
-
+    school = null;
+    query = null;
     // Clear the chatbox content (all <li> elements)
     chatbox.innerHTML = '';  // This should work if chatbox is selected properly
 
@@ -438,6 +553,14 @@ document.addEventListener('DOMContentLoaded', function () {
     closeChatbot()
 
   });
+
+
+  window.closeChatbot = function () {
+    console.log("hello I am from close modal");
+    // document.body.classList.remove("show-chatbot");
+    document.body.classList.remove("show-chatbot");
+    closeChatbot()
+  };
 
   // Toggle the visibility of the chatbot when the toggler button is clicked
   chatbotToggler.addEventListener("click", () => {
@@ -482,349 +605,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// document.addEventListener('DOMContentLoaded', function () {
-//   // Dynamically inject the chatbot HTML structure into the page
-//   const chatbotHtml = `
-//     <button class="chatbot-toggler">
-//       <span class="material-symbols-outlined"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-robot" viewBox="0 0 15 15">
-//         <path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5M3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.6 26.6 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.93.93 0 0 1-.765.935c-.845.147-2.34.346-4.235.346s-3.39-.2-4.235-.346A.93.93 0 0 1 3 9.219zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a25 25 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.754-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25 25 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.135"/>
-//         <path d="M8.5 1.866a1 1 0 1 0-1 0V3h-2A4.5 4.5 0 0 0 1 7.5V8a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v1a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1v-.5A4.5 4.5 0 0 0 10.5 3h-2zM14 7.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.5A3.5 3.5 0 0 1 5.5 4h5A3.5 3.5 0 0 1 14 7.5"/>
-//       </svg></span>
-//       <span class="material-symbols-outlined"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-//         <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
-//       </svg></span>
-//     </button>
-//     <div class="chatbot">
-//       <header>
-//         <h2>Centroid AI Support</h2>
-//         <span class="close-btn material-symbols-outlined">close</span>
-//       </header>
-//       <ul class="chatbox">
-//         <li class="chat incoming">
-//           <span class="material-symbols-outlined"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-robot" viewBox="0 0 16 16">
-//              <path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5M3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.6 26.6 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.93.93 0 0 1-.765.935c-.845.147-2.34.346-4.235.346s-3.39-.2-4.235-.346A.93.93 0 0 1 3 9.219zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a25 25 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.754-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25 25 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.135"/>
-//              <path d="M8.5 1.866a1 1 0 1 0-1 0V3h-2A4.5 4.5 0 0 0 1 7.5V8a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v1a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1v-.5A4.5 4.5 0 0 0 10.5 3h-2zM14 7.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.5A3.5 3.5 0 0 1 5.5 4h5A3.5 3.5 0 0 1 14 7.5"/>
-//              </svg></span>
-//           <p>Hi there 👋<br>Choose your preferred language:</p>
-//           <ul class="language-options">
-//             <li><button class="lang-option" data-lang="en">English</button></li>
-//             <li><button class="lang-option" data-lang="hi">Hindi</button></li>
-//             <li><button class="lang-option" data-lang="mr">Marathi</button></li>
-//           </ul>
-//         </li>
-//       </ul>
-//       <div class="chat-input">
-//         <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
-//         <span id="send-btn" class="material-symbols-rounded">send</span>
-//       </div>
-//     </div>
-//   `;
-
-//   document.body.insertAdjacentHTML('beforeend', chatbotHtml);
-
-//   // Select the relevant elements
-//   const chatbotToggler = document.querySelector(".chatbot-toggler");
-//   const closeBtn = document.querySelector(".close-btn");
-//   const chatbox = document.querySelector(".chatbox");
-//   const chatInput = document.querySelector(".chat-input textarea");
-//   const sendChatBtn = document.querySelector(".chat-input span");
-//   const languageOptions = document.querySelectorAll('.lang-option');
-
-//   let selectedLanguage = null;
-//   let firstName = null;
-//   let lastName = null;
-//   let email = null;
-//   let phoneNumber = null; // New variable for phone number
-//   const inputInitHeight = chatInput.scrollHeight;
-
-//   // Create a new chat list item with the provided message and class
-//   const createChatLi = (message, className) => {
-//     const chatLi = document.createElement("li");
-//     chatLi.classList.add("chat", `${className}`);
-//     let chatContent = className === "outgoing"
-//       ? `<p></p>`
-//       : `<span class="material-symbols-outlined"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-robot" viewBox="0 0 16 16">
-//              <!-- SVG paths here -->
-//            </svg></span>
-//            <p></p>`;
-//     chatLi.innerHTML = chatContent;
-//     chatLi.querySelector("p").textContent = message;
-//     return chatLi;
-//   };
-
-//   // Generate a response for incoming messages
-//   const generateResponse = (message) => {
-//     if (!firstName) {
-//       const namePromptMessage = selectedLanguage === 'en' ? 'What is your first name?' :
-//         selectedLanguage === 'hi' ? 'आपका पहला नाम क्या है?' :
-//           'तुमचं पूर्ण नाव काय आहे?';
-//       chatbox.appendChild(createChatLi(namePromptMessage, "incoming"));
-//     } else if (!lastName) {
-//       const lastNamePromptMessage = selectedLanguage === 'en' ? 'What is your last name?' :
-//         selectedLanguage === 'hi' ? 'आपका उपनाम क्या है?' :
-//           'तुमचं आडनाव काय आहे?';
-//       chatbox.appendChild(createChatLi(lastNamePromptMessage, "incoming"));
-//     } else if (!email) {
-//       const emailPromptMessage = selectedLanguage === 'en' ? 'What is your email address?' :
-//         selectedLanguage === 'hi' ? 'आपका ईमेल पता क्या है?' :
-//           'तुमचं ईमेल काय आहे?';
-//       chatbox.appendChild(createChatLi(emailPromptMessage, "incoming"));
-//     } else if (!phoneNumber) { // New step for phone number
-//       const phonePromptMessage = selectedLanguage === 'en' ? 'What is your phone number?' :
-//         selectedLanguage === 'hi' ? 'आपका फोन नंबर क्या है?' :
-//           'तुमचा फोन नंबर काय आहे?';
-//       chatbox.appendChild(createChatLi(phonePromptMessage, "incoming"));
-//     } else {
-//       chatbox.appendChild(createChatLi(`Nice to meet you, ${firstName} ${lastName}! How can I assist you today?`, "incoming"));
-//     }
-//     chatbox.scrollTo(0, chatbox.scrollHeight); // Scroll to the latest message
-//   };
-
-//   // Show language options
-//   languageOptions.forEach(button => {
-//     button.addEventListener('click', (e) => {
-//       selectedLanguage = e.target.getAttribute('data-lang');
-//       const languageSelectionChat = chatbox.querySelector('.chat');
-//       languageSelectionChat.style.display = 'none';
-//       generateResponse();
-//     });
-//   });
-
-//   // Handle sending user's details after they are typed
-//   sendChatBtn.addEventListener("click", () => {
-//     const userMessage = chatInput.value.trim();
-//     if (userMessage) {
-//       chatbox.appendChild(createChatLi(userMessage, "outgoing"));
-//       chatInput.value = ""; // Clear input
-//       processUserMessage(userMessage);
-//     }
-//   });
-
-//   // Add event listener for 'Enter' key to send message
-//   chatInput.addEventListener('keydown', function (event) {
-//     if (event.key === 'Enter' && !event.shiftKey) { // Prevent new line when Shift is held
-//       event.preventDefault(); // Prevent default Enter key behavior
-//       const userMessage = chatInput.value.trim();
-//       if (userMessage) {
-//         chatbox.appendChild(createChatLi(userMessage, "outgoing"));
-//         chatInput.value = ""; // Clear input
-//         processUserMessage(userMessage);
-//       }
-//     }
-//   });
-
-//   // Function to handle the user message processing
-//   function processUserMessage(userMessage) {
-//     if (!firstName) {
-//       firstName = userMessage;
-//       generateResponse();
-//     } else if (!lastName) {
-//       lastName = userMessage;
-//       generateResponse();
-//     } else if (!email) {
-//       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-//       if (emailRegex.test(userMessage)) {
-//         email = userMessage;
-//         generateResponse();
-//       } else {
-//         chatbox.appendChild(createChatLi("Please enter a valid email address.", "incoming"));
-//       }
-//     } else if (!phoneNumber) {
-//       const phoneRegex = /^[0-9]{10}$/;
-//       if (phoneRegex.test(userMessage)) {
-//         phoneNumber = userMessage;
-//         // Store user details in local storage
-//         const userDetails = {
-//           firstName,
-//           lastName,
-//           email,
-//           phoneNumber
-//         };
-//         localStorage.setItem('userDetails', JSON.stringify(userDetails));
-//         chatbox.appendChild(createChatLi("Thanks for providing the information", "incoming"));
-//         generateResponse();
-
-
-//       } else {
-//         chatbox.appendChild(createChatLi("Please enter a valid 10-digit phone number.", "incoming"));
-//       }
-//     }
-//   }
-
-//   // Close the chatbot when the close button is clicked
-//   closeBtn.addEventListener("click", () => {
-//     document.body.classList.remove("show-chatbot");
-//   });
-
-//   // Toggle the visibility of the chatbot when the toggler button is clicked
-//   chatbotToggler.addEventListener("click", () => {
-//     document.body.classList.toggle("show-chatbot");
-//   });
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-//   // Dynamically inject the chatbot HTML structure into the page
-//   const chatbotHtml = `
-//     <button class="chatbot-toggler">
-//       <span class="material-symbols-outlined"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-robot" viewBox="0 0 15 15">
-// <path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5M3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.6 26.6 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.93.93 0 0 1-.765.935c-.845.147-2.34.346-4.235.346s-3.39-.2-4.235-.346A.93.93 0 0 1 3 9.219zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a25 25 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.754-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25 25 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.135"/>
-// <path d="M8.5 1.866a1 1 0 1 0-1 0V3h-2A4.5 4.5 0 0 0 1 7.5V8a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v1a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1v-.5A4.5 4.5 0 0 0 10.5 3h-2zM14 7.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.5A3.5 3.5 0 0 1 5.5 4h5A3.5 3.5 0 0 1 14 7.5"/>
-// </svg></span>
-//       <span class="material-symbols-outlined"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-// <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
-// </svg></span>
-//     </button>
-//     <div class="chatbot">
-//       <header>
-//         <h2>Centroid AI Support</h2>
-//         <span class="close-btn material-symbols-outlined">close</span>
-//       </header>
-//       <ul class="chatbox">
-//         <li class="chat incoming">
-//           <span class="material-symbols-outlined"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-robot" viewBox="0 0 16 16">
-// <path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5M3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.6 26.6 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.93.93 0 0 1-.765.935c-.845.147-2.34.346-4.235.346s-3.39-.2-4.235-.346A.93.93 0 0 1 3 9.219zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a25 25 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.754-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25 25 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.135"/>
-// <path d="M8.5 1.866a1 1 0 1 0-1 0V3h-2A4.5 4.5 0 0 0 1 7.5V8a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v1a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1v-.5A4.5 4.5 0 0 0 10.5 3h-2zM14 7.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.5A3.5 3.5 0 0 1 5.5 4h5A3.5 3.5 0 0 1 14 7.5"/>
-// </svg></span>
-//           <p>Hi there 👋<br>How can I help you today?</p>
-//         </li>
-//       </ul>
-//       <div class="chat-input">
-//         <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
-//         <span id="send-btn" class="material-symbols-rounded">send</span>
-//       </div>
-//     </div>
-//   `;
-
-//   document.body.insertAdjacentHTML('beforeend', chatbotHtml);
-
-//   // Select the relevant elements
-//   const chatbotToggler = document.querySelector(".chatbot-toggler");
-//   const closeBtn = document.querySelector(".close-btn");
-//   const chatbox = document.querySelector(".chatbox");
-//   const chatInput = document.querySelector(".chat-input textarea");
-//   const sendChatBtn = document.querySelector(".chat-input span");
-
-//   let userMessage = null;
-//   const inputInitHeight = chatInput.scrollHeight;
-
-//   // Create a new chat list item with the provided message and class
-//   const createChatLi = (message, className) => {
-//       const chatLi = document.createElement("li");
-//       chatLi.classList.add("chat", `${className}`);
-//       let chatContent = className === "outgoing"
-//           ? `<p></p>`
-//           : `<span class="material-symbols-outlined"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-robot" viewBox="0 0 16 16">
-// <path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5M3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.6 26.6 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.93.93 0 0 1-.765.935c-.845.147-2.34.346-4.235.346s-3.39-.2-4.235-.346A.93.93 0 0 1 3 9.219zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a25 25 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.754-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25 25 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.135"/>
-// <path d="M8.5 1.866a1 1 0 1 0-1 0V3h-2A4.5 4.5 0 0 0 1 7.5V8a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v1a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1v-.5A4.5 4.5 0 0 0 10.5 3h-2zM14 7.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.5A3.5 3.5 0 0 1 5.5 4h5A3.5 3.5 0 0 1 14 7.5"/>
-// </svg></span><p></p>`;
-//       chatLi.innerHTML = chatContent;
-//       chatLi.querySelector("p").textContent = message;
-//       return chatLi;
-//   };
-
-//   // Generate a response for incoming messages (you can modify this logic)
-//   const generateResponse = (chatElement) => {
-//       const messageElement = chatElement.querySelector("p");
-//       messageElement.textContent = "The answer is yes"; // Placeholder response
-//       chatbox.scrollTo(0, chatbox.scrollHeight); // Scroll to the latest message
-//   };
-
-//   // Handle chat input and interaction
-//   const handleChat = () => {
-//       userMessage = chatInput.value.trim();
-//       if (!userMessage) return; // If the input is empty, return early
-
-//       // Clear the input textarea and reset the height to default
-//       chatInput.value = "";
-//       chatInput.style.height = `${inputInitHeight}px`;
-
-//       // Append the user's message to the chatbox
-//       chatbox.appendChild(createChatLi(userMessage, "outgoing"));
-//       chatbox.scrollTo(0, chatbox.scrollHeight);
-
-//       // Simulate a response from the chatbot after a delay
-//       setTimeout(() => {
-//           const incomingChatLi = createChatLi("Thinking...", "incoming");
-//           chatbox.appendChild(incomingChatLi);
-//           chatbox.scrollTo(0, chatbox.scrollHeight);
-//           generateResponse(incomingChatLi);
-//       }, 600); // Placeholder delay for response
-//   };
-
-//   // Adjust the height of the input textarea dynamically based on its content
-//   chatInput.addEventListener("input", () => {
-//       chatInput.style.height = `${inputInitHeight}px`; // Reset the height
-//       chatInput.style.height = `${chatInput.scrollHeight}px`; // Set the height based on content
-//   });
-
-//   // Handle the Enter key press to submit the chat
-//   chatInput.addEventListener("keydown", (e) => {
-//       if (e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
-//           e.preventDefault(); // Prevent default behavior (line break)
-//           handleChat(); // Trigger chat handling
-//       }
-//   });
-
-//   // Send the chat message when the send button is clicked
-//   sendChatBtn.addEventListener("click", handleChat);
-
-//   // Close the chatbot when the close button is clicked
-//   closeBtn.addEventListener("click", () => {
-//       document.body.classList.remove("show-chatbot"); // Hide the chatbot
-//   });
-
-//   // Toggle the visibility of the chatbot when the toggler button is clicked
-//   chatbotToggler.addEventListener("click", () => {
-//       document.body.classList.toggle("show-chatbot"); // Toggle the chatbot visibility
-//   });
-// });
