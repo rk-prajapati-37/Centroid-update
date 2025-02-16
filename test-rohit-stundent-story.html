@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sliding Image Section</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    .container-Suc-Strisrk {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80%;
+      /* height: calc(100vh - 100px); */
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .text-content-Suc-Stris {
+      width: 50%;
+      text-align: center;
+    }
+
+    .text-content-Suc-Stris h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .text-content-Suc-Stris p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    .Suc-Stris-image-container {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .image-slider img,
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      /* Maintain aspect ratio */
+      max-height: 100%;
+      /* Ensure image does not overflow */
+      display: block;
+      object-fit: contain;
+      /* Show full image without cropping */
+    }
+
+    /* Swiper Styling */
+    .swiper {
+      width: 100%;
+      height: calc(100vh - 100px);
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    .image-slider img,
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      /* Maintain aspect ratio */
+      max-height: 100%;
+      /* Ensure image does not overflow */
+      display: block;
+      object-fit: contain;
+      /* Show full image without cropping */
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container-Suc-Strisrk {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .text-content-Suc-Stris,
+      .Suc-Stris-image-container {
+        width: 100%;
+        text-align: center;
+      }
+
+      .swiper {
+        height: calc(100vh - 100px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-Suc-Strisrk ">
+    <div class="text-content-Suc-Stris">
+      <h2>Success Stories</h2>
+      <p>Inspirational stories of students who studied in our classes. See their journey of hard work, dedication, and
+        success here.</p>
+    </div>
+
+
+
+
+    <!-- Swiper Slider -->
+    <div class="Suc-Stris-image-container">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="assets-website/img/Stories/Ayush-Mishra.jpg" alt="Ayush Mishra">
+          </div>
+          <div class="swiper-slide">
+            <img src="assets-website/img/Stories/Hurditya-Dand.jpg" alt="Hurditya Dand">
+          </div>
+          <div class="swiper-slide">
+            <img src="assets-website/img/Stories/Pujit-Jha.jpg" alt="Pujit Jha">
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      direction: "vertical",
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true, // स्लाइड लगातार लूप में चलेगी
+      autoplay: {
+        delay: 3000, // 3 सेकंड में ऑटो स्लाइड
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+
+    // होवर पर स्लाइड रोकने का फ़ीचर
+    document.querySelector(".mySwiper").addEventListener("mouseenter", function () {
+      swiper.autoplay.stop(); // होवर करने पर रुकेगा
+    });
+
+    document.querySelector(".mySwiper").addEventListener("mouseleave", function () {
+      swiper.autoplay.start(); // होवर हटाने पर फिर शुरू होगा
+    });
+  </script>
+
+</body>
+
+</html>

@@ -280,11 +280,27 @@
 
         <div class="special-teacher-mobile-screen">
           <div class="special-teacher-image-container" data-aos="fade-up" style="margin: 15px 0; border-radius: 1px;">
-            <img src="assets-website/img/our-result/Senior Batch Result.jpeg" alt="Senior Batch Result">
+            <img src="assets-website/img/our-result/result-mob (1).jpeg" style="border-radius: 1px;"
+              alt="Senior Batch Result">
           </div>
+
           <div class="special-teacher-image-container" data-aos="fade-up" style="margin: 15px 0; border-radius: 1px;">
-            <img src="assets-website/img/our-result/Junior Batch Result.jpeg" alt="Junior Batch Result">
+            <img src="assets-website/img/our-result/result-mob (2).jpeg" style="border-radius: 1px;"
+              alt="Senior Batch Result">
           </div>
+
+          <div class="special-teacher-image-container" data-aos="fade-up" style="margin: 15px 0; border-radius: 1px;">
+            <img src="assets-website/img/our-result/result-mob (3).jpeg" style="border-radius: 1px;"
+              alt="Senior Batch Result">
+          </div>
+
+          <div class="special-teacher-image-container" data-aos="fade-up" style="margin: 15px 0; border-radius: 1px;">
+            <img src="assets-website/img/our-result/result-mob (4).jpeg" style="border-radius: 1px;"
+              alt="Senior Batch Result">
+          </div>
+          <!-- <div class="special-teacher-image-container" data-aos="fade-up" style="margin: 15px 0; border-radius: 1px;">
+            <img src="assets-website/img/our-result/Junior Batch Result.jpeg" alt="Junior Batch Result">
+          </div> -->
         </div>
 
 
@@ -605,7 +621,7 @@
           <div
             class="col-xl-12 col-lg-12 icon-boxes d-flex flex-column align-items-stretch justify-content-center  pl-lg-5 pr-lg-5 pt-0 pb-0 order-md-1">
 
-            <div class="row">
+            <!-- <div class="row">
               <div class="section-title text-left col-md-12" data-aos="fade-up">
                 <h2 class="mb-0">Why Centroid</h2>
               </div>
@@ -636,7 +652,82 @@
                 <h4 class="title">Troubleshooting Sessions</h4>
                 <p class="description">Special one on one sessions for particular topic, doubts etc</p>
               </div>
+            </div> -->
+
+
+
+
+            <div class="container-Suc-Strisrk ">
+              <div class="text-content-Suc-Stris">
+                <h2>Success Stories</h2>
+                <p>Inspirational stories of students who studied in our classes. See their journey of hard work,
+                  dedication, and
+                  success here.</p>
+
+
+
+                <div class="icon-box " style="text-align: left;" data-aos="fade-up" data-aos-delay="200">
+                  <div class="icon"><img src="assets-website/img/icon/coaching-icon.png" class="img-fluid" alt="" />
+                  </div>
+                  <h4 class="title">Coaching</h4>
+                  <p class="description">Preparation for JEE-ADV, Mains RMO, JMO, IPM, IMO etc </p>
+                </div>
+
+                <div class="icon-box " style="text-align: left;" data-aos="fade-up" data-aos-delay="400">
+                  <div class="icon"><img src="assets-website/img/icon/mentorship-icon.png" class="img-fluid" alt="" />
+                  </div>
+                  <h4 class="title">Mentorship</h4>
+                  <p class="description">Personal attention and mentorship of each and every students</p>
+                </div>
+
+                <div class="icon-box " style="text-align: left;" data-aos="fade-up" data-aos-delay="600">
+                  <div class="icon"><img src="assets-website/img/icon/motivational-icon.png" class="img-fluid" alt="" />
+                  </div>
+                  <h4 class="title">Motivational Sessions</h4>
+                  <p class="description">Regular interactive and motivational sessions by IIT top rankers</p>
+                </div>
+                <div class="icon-box " style="text-align: left;" data-aos="fade-up" data-aos-delay="800">
+                  <div class="icon"><img src="assets-website/img/icon/troubleshooting-icon.png" class="img-fluid"
+                      alt="" />
+                  </div>
+                  <h4 class="title">Troubleshooting Sessions</h4>
+                  <p class="description">Special one on one sessions for particular topic, doubts etc</p>
+                </div>
+
+
+
+
+              </div>
+
+
+
+
+              <!-- Swiper Slider -->
+              <div class="Suc-Stris-image-container">
+                <div class="swiper mySwiper">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <img src="assets-website/img/Stories/Ayush-Mishra.jpg" alt="Ayush Mishra">
+                    </div>
+                    <div class="swiper-slide">
+                      <img src="assets-website/img/Stories/Hurditya-Dand.jpg" alt="Hurditya Dand">
+                    </div>
+                    <div class="swiper-slide">
+                      <img src="assets-website/img/Stories/Pujit-Jha.jpg" alt="Pujit Jha">
+                    </div>
+                  </div>
+                  <div class="swiper-pagination"></div>
+                </div>
+              </div>
             </div>
+
+
+
+
+
+
+
+
           </div>
         </div>
 
@@ -1208,31 +1299,77 @@
   <!-- Template Main JS File -->
   <script src="assets-website/js/main.js"></script>
 
+  <!-- Sucesses stores -->
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
   <script>
-    $(document).ready(function () {
-      if (localStorage.getItem('popState') != 'shown') {
-        $("#myModal").delay(2000).fadeIn();
-        localStorage.setItem('popState', 'shown')
-      }
-      $('#myModal').modal('show');
-    }); 
+    var swiper = new Swiper(".mySwiper", {
+      direction: "vertical",
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+
+
+    document.querySelector(".mySwiper").addEventListener("mouseenter", function () {
+      swiper.autoplay.stop();
+    });
+
+    document.querySelector(".mySwiper").addEventListener("mouseleave", function () {
+      swiper.autoplay.start();
+    });
   </script>
-  <div id="myModal" class="modal fade" role="dialog">
+
+
+  <!-- sucsess storie -->
+
+
+
+
+
+
+  <div id="myModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-body text-center bg-info" style="background-color: transparent !important;
-    box-shadow: 0px 0px 5px 2px #008080;">
+      box-shadow: 0px 0px 5px 2px #008080;">
           <button type="button" class="close bg-light"
             style="border-radius: 0px 0px 0 35px; opacity: 1; background-color: #008080 !important; color: #ffff;"
             data-dismiss="modal" aria-hidden="true">×</button>
 
-          <a href="contact-us.html"><img src="assets-website/img/poster-image.jpeg" class="img-fluid" alt="" /></a>
-
-
+          <a href="contact-us.html"><img src="assets-website/img/poster-image.jpeg" class="img-fluid"
+              alt="Modal Image" /></a>
         </div>
       </div>
     </div>
   </div>
+
+  <script>
+    $(document).ready(function () {
+      if (localStorage.getItem('popState') != 'shown') {
+        setTimeout(function () {
+          $('#myModal').modal('show');
+          localStorage.setItem('popState', 'shown');
+        }, 2000); // 2 sec delay
+      }
+    });
+  </script>
+
+
+
+
+
   <div class="float-container">
     <a href="#" class="icon one" data-toggle="modal" data-target="#enquiry_modal"><i class="icofont-envelope"></i>
       Enquire Now</a>

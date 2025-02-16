@@ -168,13 +168,6 @@
 
 
 
-
-
-
-
-
-
-
 <div class="container">
 
   <div class="content-section">
@@ -218,7 +211,18 @@
   </div>
 </div>
 
-
+<div class="container">
+  <div class="text-content">
+    <h2>Beautiful Nature</h2>
+    <p>Experience the beauty of nature with stunning landscapes and breathtaking scenery.</p>
+  </div>
+  <div class="image-container">
+    <img src="https://source.unsplash.com/500x300/?nature,1" alt="Nature Image 1">
+    <img src="https://source.unsplash.com/500x300/?nature,2" alt="Nature Image 2">
+    <img src="https://source.unsplash.com/500x300/?nature,3" alt="Nature Image 3">
+    <img src="https://source.unsplash.com/500x300/?nature,4" alt="Nature Image 4">
+  </div>
+</div>
 
 
 
@@ -387,6 +391,73 @@
     .image-section,
     .content-section {
       max-width: 100%;
+    }
+  }
+
+
+
+
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin: 50px auto;
+    overflow: hidden;
+  }
+
+  .text-content {
+    width: 45%;
+  }
+
+  .text-content h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .text-content p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+
+  .image-container {
+    width: 45%;
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+  }
+
+  .image-container img {
+    width: 100%;
+    position: absolute;
+    bottom: -100%;
+    animation: slideUp 2s ease-in-out forwards;
+  }
+
+  .image-container img:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .image-container img:nth-child(2) {
+    animation-delay: 2s;
+  }
+
+  .image-container img:nth-child(3) {
+    animation-delay: 4s;
+  }
+
+  .image-container img:nth-child(4) {
+    animation-delay: 6s;
+  }
+
+  @keyframes slideUp {
+    from {
+      bottom: -100%;
+    }
+
+    to {
+      bottom: 0;
     }
   }
 </style>

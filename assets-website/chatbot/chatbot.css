@@ -320,8 +320,8 @@ header a:hover {
     padding: 5px 10px; /* Adjust input area padding */
   }
   .chatbot-toggler {
-    right: 40px;
-    bottom: 20px;
+    right: 50px;
+    bottom: 5px;
   }
  
   .back-to-top{
