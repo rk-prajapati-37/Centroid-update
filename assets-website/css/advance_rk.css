@@ -1188,6 +1188,25 @@ p.our-all-card-teacher-post {
   overflow: hidden;
 }
 
+
+
+.swiper-slide::before, .swiper-slide::after{
+  content: '';
+  box-shadow: 0 4px #fff;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  bottom: 10px;
+  right: 10px;
+  z-index: -1;
+  border-radius: 20px 0px 20px 20px;
+  color: #fff;
+  background: linear-gradient(180deg, #067789 45%, #f6a81b 65%);
+}
+
+
+
+
 .image-slider img,
 .swiper-slide img {
   width: 100%;
