@@ -1116,11 +1116,6 @@ p.our-all-card-teacher-post {
   transform-origin: center;
 }
 
-
-
-
-
-
 .mobile-pdf-viewer {
   display: block; /* Ensure it is visible */
   width: 100%;
@@ -1146,12 +1141,6 @@ p.our-all-card-teacher-post {
     display: block;
   }
 }
-
-
-
-
-
-
 
 .container-Suc-Strisrk {
   display: flex;
@@ -1188,8 +1177,6 @@ p.our-all-card-teacher-post {
   overflow: hidden;
 }
 
-
-
 .swiper-slide::before, .swiper-slide::after{
   content: '';
   box-shadow: 0 4px #fff;
@@ -1203,9 +1190,6 @@ p.our-all-card-teacher-post {
   color: #fff;
   background: linear-gradient(180deg, #067789 45%, #f6a81b 65%);
 }
-
-
-
 
 .image-slider img,
 .swiper-slide img {
