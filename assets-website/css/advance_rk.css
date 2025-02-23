@@ -1,11 +1,6 @@
 .tagline-txt {
   margin: 20px auto;
-  /* background-color: #067789; */
   box-shadow: none;
-  /* background-image: url(../img/inside-banner/tagline-txt-rk.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center; */
   height: 20vh;
   box-shadow: -5px 7px 5px rgba(0, 0, 0, 0.8);
     border: 2px solid #f8aa0f;
@@ -18,7 +13,6 @@
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
-  /* color: #067789; */
   color: #fff;
   overflow: hidden; /* Ensure the text doesn't overflow */
   height: 5.5rem; /* Adjust height to match font size */
@@ -77,15 +71,34 @@
   border-radius: 20px;
 }
 
-/*  */
-/* .particular-box{
-padding: 30px 0;
-border-radius: 10px;
-overflow: hidden;
-background: linear-gradient(180deg, rgba(227, 242, 245, 1) 45%, #f6a81b 65%);
-box-shadow: 3px 3px 10px #e5a017;
-} */
 
+
+
+
+/* sunday Han */
+.Hands-on-Science-testin {
+  display: flex;
+  margin: 25px auto;
+}
+.parent-container blockquote {
+  padding: 10px 15px 15px;
+  margin: 0px 15px;
+  background-color: transparent;
+  text-align: right;
+  box-shadow: 5px 5px 5px #000;
+  border-radius: 5px;
+}
+.parent-container  blockquote p {
+  color: #fff;
+  line-height: 1;
+  font-size: 1.2rem;
+  text-align: left;
+}
+.parent-container blockquote.responsive-quote cite {
+  text-align: right !important;
+  color: #ffc107;
+}
+/*  */
 
 .partrk-box:before, .partrk-box:after {
   content: '';
@@ -199,12 +212,6 @@ a.explore-btn{
   overflow: hidden;
   background-color: #067789;
 }
-
-/* .ytv-video-section-rk .video-thumbnail img {
-  width: 100%;
-  border-radius: 8px;
- margin: 0.6rem 0;
-} */
 
 .ytv-video-section-rk .video-thumbnail img {
   width: 100%;

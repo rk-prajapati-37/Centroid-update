@@ -3077,6 +3077,7 @@ button.close:hover {
     overflow: hidden;
     border-radius: 10px;
     position: relative;
+    margin: 1rem auto;
 }
 
 .our-team img {
@@ -3228,11 +3229,11 @@ button.close:hover {
     margin-right: 15px;
 }
 
-@media only screen and (max-width: 990px) {
+/* @media only screen and (max-width: 990px) {
     .our-team {
         margin-bottom: 50px;
     }
-}
+} */
 
 @media only screen and (max-width: 360px) {
     .our-team .team-content {
