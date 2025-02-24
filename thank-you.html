@@ -4,12 +4,265 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank You</title>
+  <title>Batch Design</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+
+    .prticl-brchre-degn .batch-container {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .prticl-brchre-degn .batch-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .prticl-brchre-degn .batch-title {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bold;
+      color: #0056b3;
+    }
+
+    .prticl-brchre-degn .batch-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 10px;
+    }
+
+    .prticl-brchre-degn .batch-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .prticl-brchre-degn .batch-level {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      background: #e3f2fd;
+      padding: 5px 15px;
+      border-radius: 5px;
+    }
+
+    .prticl-brchre-degn .batch-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .prticl-brchre-degn .batch-box {
+      width: 48%;
+      background: #e3f2fd;
+      /* padding: 15px; */
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .prticl-brchre-degn .batch-box h3 {
+      background: #004d99;
+      color: #fff;
+      padding: 8px;
+      border-radius: 5px 5px 0px 0px;
+      text-align: center;
+    }
+
+    .prticl-brchre-degn .batch-box ul {
+      list-style: none;
+      margin-top: 10px;
+      padding: 15px;
+    }
+
+    .prticl-brchre-degn .batch-box ul li {
+      padding: 5px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .prticl-brchre-degn .batch-box ul li::before {
+      content: '\25B3';
+      color: #004d99;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+    @media (max-width: 768px) {
+      .prticl-brchre-degn .batch-content {
+        flex-direction: column;
+      }
+
+      .prticl-brchre-degn .batch-box {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Thank You!</h1>
-  <p>Your submission has been received. We will contact you soon.</p>
+  <section id="prticl-brchre-degn " class="about-us common-padding  prticl-brchre-degn ">
+
+
+    <div class="batch-container">
+      <div class="batch-header">
+        <span class="batch-title">
+          <div class="batch-image">
+            <img src="assets-website/img/foundation-course/A.P.J.Abdul_Kalam.png" alt="Kalam">
+          </div>
+          KALAM BATCH... Where Young Minds Soar
+        </span>
+        <span class="batch-level">VII</span>
+      </div>
+      <div class="batch-content">
+        <div class="batch-box">
+          <h3>Competitive Edge Program</h3>
+          <ul>
+            <li>Lectures on weekdays</li>
+            <li>2 lectures per week</li>
+            <li>05:30 PM - 08:00 PM</li>
+            <li>Exams: IMO(SOF), NSO(SOF) etc.</li>
+            <li>10 Mock tests for each exam</li>
+          </ul>
+        </div>
+        <div class="batch-box">
+          <h3>Academic Ace Program</h3>
+          <ul>
+            <li>Lectures on weekends</li>
+            <li>4 Lectures per week</li>
+            <li>1 Hands-on learning session per week</li>
+            <li>Sat (5 PM - 8 PM), Sun (9 AM - 2 PM)</li>
+            <li>Curriculum: School Syllabus (PCMB)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="batch-container">
+      <div class="batch-header">
+        <span class="batch-title">
+          <div class="batch-image">
+            <img src="assets-website/img/foundation-course/Albert_Einstein.png" alt="Einstein">
+          </div>
+          EINSTEIN BATCH... The Genius Journey Begins
+        </span>
+        <span class="batch-level">VIII</span>
+      </div>
+      <div class="batch-content">
+        <div class="batch-box">
+          <h3>Competitive Edge Program</h3>
+          <ul>
+            <li>Lectures on weekdays</li>
+            <li>2 lectures per week</li>
+            <li>05:30 PM - 08:00 PM</li>
+            <li>Exams: IMO(SOF), NSO(SOF), MAT & JMO</li>
+            <li>10 Mock tests for each exam</li>
+          </ul>
+        </div>
+        <div class="batch-box">
+          <h3>Academic Ace Program</h3>
+          <ul>
+            <li>Lectures on weekends</li>
+            <li>4 Lectures per week</li>
+            <li>1 Hands-on learning session per week</li>
+            <li>Sat (5 PM - 8 PM), Sun (9 AM - 2 PM)</li>
+            <li>Curriculum: School Syllabus (PCMB)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="batch-container">
+      <div class="batch-header">
+        <span class="batch-title">
+          <div class="batch-image">
+            <img src="assets-website/img/foundation-course/Isaac_Newton.png" alt="Isaac_Newton">
+          </div>
+          NEWTON BATCH... Innovating the Future
+        </span>
+        <span class="batch-level">IX</span>
+      </div>
+      <div class="batch-content">
+        <div class="batch-box">
+          <h3>JEE/NEET Bridge Program </h3>
+          <ul>
+            <li>Lectures on weekdays</li>
+            <li>2 lectures per week</li>
+            <li>05:30 PM - 08:00 PM</li>
+            <li>Exams: IMO & NSO (SOF), RMO, NSEJs & HOMI BHABHA Exam</li>
+            <li>10 Mock tests for each exam</li>
+          </ul>
+        </div>
+        <div class="batch-box">
+          <h3>Academic Ace Program</h3>
+          <ul>
+            <li>Lectures on weekends</li>
+            <li>4 Lectures per week</li>
+            <li>1 Hands-on learning session per week</li>
+            <li>Sat (5 PM - 8 PM), Sun (9 AM - 2 PM)</li>
+            <li>Curriculum: School Syllabus (PCMB)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="batch-container">
+      <div class="batch-header">
+        <span class="batch-title">
+          <div class="batch-image">
+            <img src="assets-website/img/foundation-course/Kalpana Chawla.png" alt="Kalpana Chawla">
+          </div>
+          Kalpana Batch... Reaching beyond the sky
+        </span>
+        <span class="batch-level">X</span>
+      </div>
+      <div class="batch-content">
+        <div class="batch-box">
+          <h3>JEE/NEET Bridge Program </h3>
+          <ul>
+            <li>Early exposure to JEE/NEET Concepts
+            </li>
+            <li>1 dedicated lecture on a weekday</li>
+            <li>05:30 PM - 08:00 PM</li>
+            <li>1 Board exam practice test per week
+            </li>
+            <li>05:00 PM - 08:00 PM</li>
+          </ul>
+        </div>
+        <div class="batch-box">
+          <h3>Academic Ace Program</h3>
+          <ul>
+            <li>Lectures on weekends</li>
+            <li>4 Lectures per week</li>
+            <li>1 Hands-on learning session per week</li>
+            <li>Sat (5 PM - 8 PM), Sun (9 AM - 2 PM)</li>
+            <li>Curriculum: School Syllabus (PCMB)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
 </body>
 
 </html>
