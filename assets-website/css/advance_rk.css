@@ -98,14 +98,14 @@ h2.mb-0.hds-sci-title.hand-ttl-hdn {
 .parent-container blockquote {
   padding: 10px 15px 15px;
   margin: 0px 15px;
-  background-color: #eff9fb;
+  background-color: #067789;
   text-align: right;
   box-shadow: 0px 7px 10px 0px #fcd801;
   border-radius: 5px;
 }
 
 .parent-container blockquote p {
-  color: #067789;
+  color: #fff;
   line-height: 1;
   font-size: 1.2rem;
   text-align: left;
@@ -113,7 +113,8 @@ h2.mb-0.hds-sci-title.hand-ttl-hdn {
 
 .parent-container blockquote.responsive-quote cite {
   text-align: right !important;
-  color: #ffc107;
+  color: #ffe800;
+  font-weight: 600;
 }
 
 /*  */
@@ -1350,6 +1351,67 @@ p.our-all-card-teacher-post {
 /* Contact Map End */
 
 
+/*  */
+
+
+.foundation-course-txt-vid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 0px;
+}
+
+.fond-mrg-pd {
+  padding: 4% 0;
+}
+
+.foundation-course-txt {
+  flex: 1;
+  text-align: left;
+  border: 2px solid #f8aa0f;
+  margin: 10px;
+  padding: 10px;
+  background: radial-gradient(circle, #fcd801 70%, #F8A90F 100%);
+  border-radius: 8px;
+}
+
+section.foundation-course-txt.lft-txt-shd {
+  box-shadow: -5px 7px 5px rgba(0, 0, 0, 0.8);
+}
+
+section.foundation-course-txt.rgt-txt-shd {
+  box-shadow: 5px 7px 5px rgba(0, 0, 0, 0.8);
+}
+
+.fond-drecp-txt {
+  background: #067789;
+}
+
+.foundation-course-txt p {
+  margin: 20px auto;
+  padding: 5px;
+  color: #fff;
+}
+
+.foundation-course-vid {
+  flex: 1;
+  max-width: 500px;
+  border-radius: 8px;
+}
+
+.foundation-course-vid iframe,
+.foundation-course-vid video {
+  width: 100%;
+  height: 280px;
+  border-radius: 8px;
+}
+
+
+
+
+/*  */
 
 .prticl-brchre-degn .batch-container {
   background: #fff;
@@ -1385,6 +1447,7 @@ p.our-all-card-teacher-post {
   font-weight: bold;
   color: #0056b3;
 }
+
 .prticl-brchre-degn .batch-title p {
   white-space: nowrap;
   overflow: hidden;
@@ -1394,14 +1457,17 @@ p.our-all-card-teacher-post {
   -webkit-text-fill-color: transparent;
 
 }
+
 @keyframes typewriter {
   from {
-      width: 0%;
+    width: 0%;
   }
+
   to {
-      width: 100%;
+    width: 100%;
   }
 }
+
 .prticl-brchre-degn .batch-image {
   width: 50px;
   height: 50px;
@@ -1482,6 +1548,23 @@ p.our-all-card-teacher-post {
   .prticl-brchre-degn .batch-box {
     width: 100%;
   }
+
+  .foundation-course-txt-vid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* .foundation-course-txt,
+  .foundation-course-vid {
+    max-width: 90%;
+  } */
+
+  .foundation-course-vid iframe,
+  .foundation-course-vid video {
+    height: 200px;
+  }
+
+
 }
 
 
@@ -1569,7 +1652,8 @@ p.our-all-card-teacher-post {
     text-wrap: auto;
     line-height: 1.1;
     margin-bottom: 0;
-}
+  }
+
   .prticl-brchre-degn .batch-header.special-teacher-header {
     padding: 5px;
   }
@@ -1577,11 +1661,12 @@ p.our-all-card-teacher-post {
   .prticl-brchre-degn .batch-header.special-teacher-header:before {
     border-bottom: 55px solid #f8aa0f;
     border-right: 50px solid transparent;
-}
-.prticl-brchre-degn .batch-header:after {
-  border-top: 55px solid #f8aa0f;
-  border-left: 50px solid #000;
-}
+  }
+
+  .prticl-brchre-degn .batch-header:after {
+    border-top: 55px solid #f8aa0f;
+    border-left: 50px solid #000;
+  }
 }
 
 @media (max-width: 768px) {
